@@ -1,0 +1,8 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+nav {
+    background-image: $darkBackgroundImage;
+    padding: 10px;
+    @include displayFlex();
+}

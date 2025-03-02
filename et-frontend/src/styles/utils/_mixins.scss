@@ -1,0 +1,34 @@
+// Imports
+@use './vars' as *;
+
+//Mixins
+@mixin sizes($width: 100%, $height: 100%){
+    width: $width;
+    height: $height;
+}
+@mixin displayFlex($justifyContent: center, $flexDirection: column){
+    display: flex;
+    justify-content: $justifyContent;
+    flex-direction: $flexDirection;
+    align-items: center;
+}
+@mixin fontConfig($textAlign: center, $fontSize: $sm, $fontWeight: $noBold, $fontColor: $darkFontColor){
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+    color: $fontColor;
+    text-align: $textAlign;
+}
+@mixin buttonDesign($width: 100%, $height: 100%){
+    padding: 5px;
+    border: 0px;
+    border-radius: 50px;
+    background-image: $degBlueColor;
+    transition: all 0.3s ease;
+    font-family: $afacadFont;
+    width: $width;
+    height: $height;
+    font-size: $md;
+    color: $lightFontColor;
+    cursor: pointer;
+    @include displayFlex();
+}

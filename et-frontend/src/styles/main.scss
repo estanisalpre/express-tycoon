@@ -1,0 +1,14 @@
+@use './utils/vars' as *;       
+@use './utils/mixins' as *;     
+@use './base/reset';       
+@use './base/typography';  
+@use './base/base';  
+@use './components/navbar';      
+
+// Estilos generales
+body {
+    font-family: $afacadFont;
+    background: $backgroundImage;
+    background-size: cover;
+    background-attachment: fixed;
+}
