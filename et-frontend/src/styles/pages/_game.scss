@@ -1,0 +1,20 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+#fatherContainer{
+    @include sizes(100vw, 94vh);
+    @include displayFlex($flexDirection:row, $justifyContent: space-between);
+    margin-top: 50px;
+    padding: 10px;
+    color: $darkFontColor;
+    position: relative;
+
+    #leftMenu, #rightMenu{
+        @include sizes(300px);
+        @include displayFlex();
+        background-image: $standar-Normal-BackgroundImage;
+        box-shadow: $shadow;
+        border-radius: 5px;
+
+    }
+}

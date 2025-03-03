@@ -1,0 +1,30 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+.playerMenu{
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include sizes(50%,80px);
+    @include displayFlex($flexDirection:row, $justifyContent: space-between);
+    border-radius: 5px;
+    padding: 5px;
+
+    ul{
+        @include sizes();
+        @include displayFlex($flexDirection:row, $justifyContent: space-between);
+        gap: 10px;
+
+        li{
+            list-style: none;
+            color: $lightFontColor;
+            border-radius: 10px;
+            @include sizes();
+            @include displayFlex();
+            background-image: $deg-Medium-PurpleToBlue;
+            cursor: pointer;
+            box-shadow: none;
+        }
+    }
+}

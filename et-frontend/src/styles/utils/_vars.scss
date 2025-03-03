@@ -1,21 +1,58 @@
 //Variables
-$backgroundImage: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
-$darkBackgroundImage: linear-gradient(60deg, #29323c 0%, #22282e 100%);
-$degColorBasic: linear-gradient(180deg, #062478 0%, #5a168a 100%);
-$nightBackgroundImage: linear-gradient(#051327, #000);
-$btnImageColor: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-$degDivsColor: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-$degBlueColor: linear-gradient(50deg, #3f6deb 0%, #332eba 100%);
-$degVioletColor: linear-gradient(50deg, #7b0072 0%, #aa1f69 100%);
+// Background Gradiant Colors
+$standar-Normal-BackgroundImage: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+$standar-Dark-BackgroundImage: linear-gradient(60deg, #29323c 0%, #22282e 100%);
+
+// Container Gradiant Colors
+// From blue to blue (Dark to Light & viceverse)
+$deg-v1-BlueToBlue: linear-gradient(135deg, #0E07D9 0%, #0785D9 100%); 
+$deg-v2-BlueToBlue: linear-gradient(135deg, #0785D9 0%, #0E07D9 100%); 
+// From purple to purple (Dark to Light & viceverse)
+$deg-v1-PurpleToPurple: linear-gradient(135deg, #5207D9 0%, #9707D9 100%); 
+$deg-v2-PurpleToPurple: linear-gradient(135deg, #9707D9 0%, #5207D9 100%); 
+// From blue to purple (Dark - Medium - Light)
+$deg-Dark-BlueToPurple: linear-gradient(135deg, #0E07D9 0%, #5207D9 100%); 
+$deg-Medium-BlueToPurple: linear-gradient(135deg, #0742D9 0%, #5A56DB 100%); 
+$deg-Light-BlueToPurple: linear-gradient(135deg, #0785D9 0%, #9707D9 100%); 
+// From purple to blue (Dark - Medium - Light)
+$deg-Dark-PurpleToBlue: linear-gradient(135deg, #0E07D9 0%, #5207D9 100%); 
+$deg-Medium-PurpleToBlue: linear-gradient(135deg, #0E07D9 0%, #5207D9 100%); 
+$deg-Light-PurpleToBlue: linear-gradient(135deg, #0E07D9 0%, #5207D9 100%); 
+
+// Primary Colors
+// Blue
+$darkBlue: #0E07D9;
+$mediumBlue: #0742D9;
+$lightBlue: #0785D9;
+// Purple
+$darkPurple: #5207D9;
+$mediumPurple: #5A56DB;
+$lightPurple: #9707D9;
+
+// Font Colors
 $darkFontColor: #2c2c2c;
 $lightFontColor: #f1f1f1;
+
+// Buttons & Inputs
+$btnImageColor: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+// Fonts
 $afacadFont: "Afacad", serif;
-$rubikFont: "Rubik Mono One", serif;
-$jerseyFont: "Jersey 10", serif;
-$poppinsFont: "Poppins", serif;
+$jersey20Font: "Jersey 20", serif;
+$nunitoFont: "Nunito", serif;
+$openSansFont: "Open Sans", serif;
+
+// Font Sizes
 $sm: 14px;
 $md: 16px;
 $lg: 22px;
 $slg: 30px;
+$extraLg: 45px;
+
+// Font Weights
 $noBold: 400;
 $bold: 600;
+$superBold: 800;
+
+// Shadow
+$shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);

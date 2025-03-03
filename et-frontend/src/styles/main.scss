@@ -3,12 +3,19 @@
 @use './base/reset';       
 @use './base/typography';  
 @use './base/base';  
-@use './components/navbar';      
+@use './components/navbar';  
+@use './pages/game';  
+@use './components/playerMenu';
 
-// Estilos generales
 body {
-    font-family: $afacadFont;
-    background: $backgroundImage;
-    background-size: cover;
-    background-attachment: fixed;
+    font-family: $jersey20Font;
+    background: $standar-Dark-BackgroundImage;
+    /* background-size: cover;
+    background-attachment: fixed; */
+    color: $lightFontColor;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    width: 100%;
 }
