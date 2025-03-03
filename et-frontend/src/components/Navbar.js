@@ -7,6 +7,7 @@ function Navbar() {
       <ul>
         <li><Link className='link' to="/game">Game</Link></li>
         <li><Link className='link' to="/login">Login</Link></li>
+        <li><Link className='link' to="/register">Register</Link></li>
       </ul>
     </nav>
   );

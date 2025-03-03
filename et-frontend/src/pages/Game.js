@@ -1,30 +1,48 @@
-import React, { useEffect, useState } from "react"
-import axios from "axios"
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { getUserData } from "../services/authService"; // Importa la función correcta
 
-function Game(){
-    const [cities, setCities] = useState([]);
+function Game() {
+  const [userData, setUserData] = useState(null);
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        axios.get("http://localhost:5000/cities")
-        .then(response => {
-            setCities(response.data)
-        })
-        .catch(error => console.error("Error al obtener ciudades:", error));
-    }, []);
+  useEffect(() => {
+    const userEmail = localStorage.getItem("userEmail");
 
-    return(
-        <div>
-            <h1>Ciudades disponibles 🌍</h1>
-            <ul>
-                {cities.map((city, index) => (
-                <li key={index}>{city.city_name}</li>
-                ))}
-            </ul>
-        </div>
-    )
+    if (!userEmail) {
+      navigate("/login");
+      return;
+    }
+
+    getUserData(userEmail)
+      .then((data) => {
+        if (data.error) {
+          console.error("Error al obtener datos:", data.error);
+          navigate("/login");
+        } else {
+          setUserData(data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error en la solicitud:", error);
+        navigate("/login");
+      });
+  }, [navigate]);
+
+  if (!userData) {
+    return <div>Cargando...</div>;
+  }
+
+  return (
+    <div>
+      <h2>Bienvenido, {userData.user_name}</h2>
+      <p>Email: {userData.user_email}</p>
+      <p>First time: {userData.first_time === 1 ? "Sí" : "No"}</p>
+      <p>Money: {userData.money}</p>
+      <p>Nivel: {userData.level}</p>
+      <p>Experiencia: {userData.experience}</p>
+    </div>
+  );
 }
 
 export default Game;
-
-
-
