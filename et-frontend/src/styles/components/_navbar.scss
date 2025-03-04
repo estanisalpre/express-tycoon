@@ -2,7 +2,30 @@
 @use '../utils/mixins' as *;
 
 nav {
-    background-image: $darkBackgroundImage;
+    background-image: $deg-Dark-BlueToPurple;
     padding: 10px;
-    @include displayFlex();
+    @include sizes($height: 50px);
+    position: fixed;
+    top: 0px;
+    @include displayFlex($flexDirection: row, $justifyContent: space-between);
+
+    img{
+        @include sizes(auto,100%);
+    }
+    .link{
+        color: $lightFontColor;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    ul{
+        @include sizes(25%,100%);
+        @include displayFlex($flexDirection:row, $justifyContent: space-between);
+
+        li{
+            list-style: none;
+            @include sizes();
+            @include displayFlex();
+        }
+    }
 }
