@@ -34,6 +34,11 @@ import ConcessionaireIcon from '../assets/icons/store.png'
 import GasStationIcon from '../assets/icons/gas-station.png'
 import RealStateIcon from '../assets/icons/garage-3.png'
 import CorporationIcon from '../assets/icons/garage-4.png'
+import MoneyIcon from '../assets/icons/money.png'
+import PetrolStorageIcon from '../assets/icons/petrol-storage.png'
+import xpIcon from '../assets/icons/xp.png'
+import DolarCoinIcon from '../assets/icons/dolar-coin.png'
+
 
 
 
@@ -84,5 +89,12 @@ export const playerMenu = {
     concessionaire: ConcessionaireIcon,
     gasStation: GasStationIcon,
     corporation: CorporationIcon,
+}
+
+export const topStats = {
+    dolarCoin: DolarCoinIcon,
+    petrolStorage: PetrolStorageIcon,
+    money: MoneyIcon,
+    xp: xpIcon,
 }
     

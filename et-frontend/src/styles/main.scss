@@ -6,6 +6,7 @@
 @use './components/navbar';  
 @use './pages/game';  
 @use './components/playerMenu';
+@use './components/playerTopStats';
 
 body {
     font-family: $jersey20Font;
