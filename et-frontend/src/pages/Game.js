@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { getUserData } from "../services/authService";
 import CentralWall from '../components/CentralWall';
 import PlayerMenu from "../components/PlayerMenu";
+import PlayerTopStats from "../components/PlayerTopStats";
 import { globalImages, navMenuIcons, playerStatsIcon, socialIcons } from "../utils/Images";
 
 function Game() {
@@ -38,6 +39,8 @@ function Game() {
 
   return (
     <section id="fatherContainer">
+      <PlayerTopStats/>
+
       <aside id="leftMenu">
         <span className="special-span">Redirecciones</span>
         <Link class="linkLeftMenu" path="/"><img src={navMenuIcons.home} alt="Icon"/>Inicio</Link>
@@ -49,7 +52,7 @@ function Game() {
         <Link class="linkLeftMenu" path="/"><img src={navMenuIcons.share} alt="Icon"/>Invitar amigo(s)</Link>
 
         <span className="special-span">Información</span>
-        <Link class="linkLeftMenu" path="/"><img src={navMenuIcons.events} alt="Icon"/>Eventos</Link>
+        <Link class="linkLeftMenu" path="/"><img src={navMenuIcons.events} alt="Icon"/>Eventos & Noticias</Link>
         <Link class="linkLeftMenu" path="/"><img src={navMenuIcons.questions} alt="Icon"/>Preguntas Frecuentes</Link>
         <Link class="linkLeftMenu" path="/"><img src={navMenuIcons.security} alt="Icon"/>Seguridad</Link>
 

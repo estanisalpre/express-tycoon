@@ -1,0 +1,35 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+.playerTopStatsContainer{
+    position:absolute;
+    top: 25px;
+    @include sizes(60%,$height: 35px);
+    @include displayFlex();
+    transform: translate(-50%, -50%);
+    left: 50%;
+    border-radius: 10px;
+    background-color: $mediumPurple;
+
+    ul{
+        @include sizes();
+        @include displayFlex($flexDirection: row, $justifyContent: space-between);
+        padding: 5px;
+        color: $lightFontColor;
+        gap: 10px;
+
+        li{
+            list-style: none;
+            @include sizes();
+            @include displayFlex($flexDirection:row);
+            gap: 10px;
+
+            span{
+                font-size: $lg;
+                @include sizes();
+                @include displayFlex();
+                align-items: flex-start;
+            }
+        }
+    }
+}

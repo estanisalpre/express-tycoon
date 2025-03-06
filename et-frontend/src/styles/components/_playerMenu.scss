@@ -6,7 +6,7 @@
     bottom: 0px;
     left: 50%;
     transform: translate(-50%, -50%);
-    @include sizes(50%,80px);
+    @include sizes(60%,80px);
     @include displayFlex($flexDirection:row, $justifyContent: space-between);
     border-radius: 5px;
     padding: 5px;
@@ -22,9 +22,32 @@
             border-radius: 10px;
             @include sizes();
             @include displayFlex();
-            background-image: $deg-Medium-PurpleToBlue;
+            background-color: $mediumPurple;
             cursor: pointer;
-            box-shadow: none;
+
+            .link{
+                @include sizes();
+                @include displayFlex();
+                text-decoration: none;
+
+                span{
+                    @include sizes(120%,$height: 25px);
+                    @include displayFlex();
+                    font-weight: $noBold;
+                    color: $lightFontColor;
+                    margin-top: -10px;
+                    text-shadow: 0px 1px black;
+                }
+                img{
+                    @include sizes(40%,auto);
+                }
+            }
+        }
+        li:hover{
+            transform: scale(1.1);
+        }
+        .specialLi{
+            background-image: $gold-BackgroundImage;
         }
     }
 }

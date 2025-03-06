@@ -24,6 +24,23 @@ import VehiclesIcon from '../assets/icons/truck.png'
 import RoutesIcon from '../assets/icons/routes.png'
 import EmployeesIcon from '../assets/icons/employee.png'
 import SuccessDeliveriesIcon from '../assets/icons/checklist.png'
+import MapIcon from '../assets/icons/map.png'
+import GarageIcon from '../assets/icons/garage-2.png'
+import VehicleIcon from '../assets/icons/loading-vehicle.png'
+import RouteIcon from '../assets/icons/routes.png'
+import EmployeeIcon from '../assets/icons/employee.png'
+import MaintenanceIcon from '../assets/icons/maintenance.png'
+import ConcessionaireIcon from '../assets/icons/store.png'
+import GasStationIcon from '../assets/icons/gas-station.png'
+import RealStateIcon from '../assets/icons/garage-3.png'
+import CorporationIcon from '../assets/icons/garage-4.png'
+import MoneyIcon from '../assets/icons/money.png'
+import PetrolStorageIcon from '../assets/icons/petrol-storage.png'
+import xpIcon from '../assets/icons/xp.png'
+import DolarCoinIcon from '../assets/icons/dolar-coin.png'
+
+
+
 
 export const navMenuIcons = {
     home: HomeIcon,
@@ -59,5 +76,25 @@ export const socialIcons = {
     linkedinLogo: LinkedinLogo,
     githubLogo: GithubLogo,
     playstoreLogo: PlayStoreLogo,
+}
+
+export const playerMenu = {
+    map: MapIcon,
+    garage: GarageIcon,
+    vehicle: VehicleIcon,
+    route: RouteIcon,
+    employee: EmployeeIcon,
+    maintenance: MaintenanceIcon,
+    realState: RealStateIcon,
+    concessionaire: ConcessionaireIcon,
+    gasStation: GasStationIcon,
+    corporation: CorporationIcon,
+}
+
+export const topStats = {
+    dolarCoin: DolarCoinIcon,
+    petrolStorage: PetrolStorageIcon,
+    money: MoneyIcon,
+    xp: xpIcon,
 }
     
