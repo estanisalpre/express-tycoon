@@ -49,7 +49,7 @@ function Game() {
         <Link class="linkLeftMenu" path="/"><img src={navMenuIcons.share} alt="Icon"/>Invitar amigo(s)</Link>
 
         <span className="special-span">Información</span>
-        <Link class="linkLeftMenu" path="/"><img src={navMenuIcons.events} alt="Icon"/>Eventos</Link>
+        <Link class="linkLeftMenu" path="/"><img src={navMenuIcons.events} alt="Icon"/>Eventos & Noticias</Link>
         <Link class="linkLeftMenu" path="/"><img src={navMenuIcons.questions} alt="Icon"/>Preguntas Frecuentes</Link>
         <Link class="linkLeftMenu" path="/"><img src={navMenuIcons.security} alt="Icon"/>Seguridad</Link>
 
