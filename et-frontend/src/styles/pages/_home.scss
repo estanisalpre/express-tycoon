@@ -1,0 +1,227 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+@use '../utils/animations' as *;
+
+.landingContainer{
+    margin-top: 50px;
+    @include sizes();
+    @include displayFlex();
+    gap: 25px;
+
+    .presentationContainer,
+    .featuresContainer,
+    .aboutContainer,
+    .howToPlayContainer,
+    .ctaContainer,
+    .faqContainer{
+        @include sizes($height: 500px);
+        @include displayFlex();
+    }
+    .presentationContainer{
+        flex-direction: row;
+        height: 750px;
+        position: relative;
+        align-items: flex-end;
+        justify-content: flex-end;
+
+        div{
+            @include sizes();
+            @include displayFlex();
+        }
+        .leftPresentation{
+            gap: 10px;
+            width: 70%;
+            z-index: 101;
+            position: absolute;
+            left: 0px;
+            top: 0px; 
+
+            h1{
+                @include sizes(80%,220px);
+                @include displayFlex();
+                font-family: $afacadFont;
+                font-weight: $superBold;
+                font-size: 80px;
+                line-height: 70px;
+                color: $lightFontColor;
+            }
+            h2{
+                font-family: $nunitoFont;
+                color: $lightPurple;
+                font-size: $lg;
+                @include sizes(80%,50px);
+                @include displayFlex();
+                align-items: flex-start;
+            }
+            .presBtnContainer{
+                @include sizes(80%,100px);
+                @include displayFlex();
+                align-items: flex-start;
+
+                .ctaBtn{
+                    background-color: $lightFontColor;
+                    text-decoration: none;
+                    color: $mediumPurple;
+                    padding: 15px;
+                    border-radius: 10px;
+                    font-size: 30px;
+                    @include displayFlex();
+                    cursor: pointer;
+                    font-weight: $superBold;
+                    animation: btn-move-animation 2s ease 0s 1;
+                    animation-delay: 5s;
+                    font-family: $nunitoFont;
+
+                    &:hover{
+                        transform: scale(1.1);
+                        animation: rotar 2s ease-in-out 0s 1;
+                    }
+                }
+            }
+        }
+        .rightPresentation {
+            background-image: url("../assets/backgrounds/presentation.png");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            @include sizes(70%);
+            z-index: 100;
+           
+          }
+    }
+    .featuresContainer{
+        background-image: $standar-Normal-BackgroundImage;
+        @include sizes(90%, 100%);
+        box-shadow: $shadow;
+        border-radius: 10px;
+        color: $darkFontColor;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 50px;
+        gap: 15px;
+        cursor: default;
+        z-index: 101;
+        margin-top: -25px;
+
+        .aboutContainer{
+            @include sizes(90%,300px);
+            @include displayFlex();
+            align-items: flex-start;
+            justify-content: flex-start;
+            font-family: $nunitoFont;
+            box-shadow: 0px;
+            gap: 10px;
+    
+            h2{
+                font-size: 60px;
+                color: $lightPurple;
+                font-weight: 900;
+            }
+            p{
+                font-size: $lg;
+                align-items: flex-start;
+            }
+            h3{
+                font-family: $nunitoFont;
+                font-weight: $superBold;
+                font-size: $extraLg;
+                color: $lightPurple;
+                align-items: flex-start;
+            }   
+        }
+
+        div{
+            @include displayFlex();
+            border-radius: 10px;
+            box-shadow: $shadow;
+            @include sizes(350px,200px);
+            gap: 10px;
+
+            h3{
+                @include sizes($height:30px);
+                @include displayFlex();
+                padding: 5px;
+                color: $mediumPurple;
+                font-size: $lg
+            }
+            p{
+                @include sizes();
+                @include displayFlex();
+                justify-content: flex-start;
+                padding: 10px;
+                font-family: $nunitoFont;
+            }
+
+            &:hover{
+                background-color: rgb(214, 221, 255);
+            }
+        }
+
+    }
+    .howToPlayContainer{
+        @include sizes();
+        gap: 15px;
+        font-family: $afacadFont;
+        padding: 50px;
+        flex-wrap: wrap;
+        flex-direction: row;
+
+        .articleHowTo{
+            @include sizes(90%);
+            @include displayFlex();
+
+            h2{
+                font-weight: 900;
+                font-size: 80px;
+                color: $lightFontColor;
+            }
+            p{
+                font-size: $lg;
+                @include displayFlex();
+                width: 90%;
+            }
+        }
+
+        div{
+            @include sizes(300px,250px);
+            @include displayFlex();
+            padding: 10px;
+            border-radius: 10px;
+            background-image: $deg-Light-BlueToPurple;
+
+            h3{
+                @include sizes($height: 30px);
+                @include displayFlex();
+                font-size: $lg;
+            }
+            p{
+                @include sizes();
+                font-size: 18px;
+                @include displayFlex();
+            }
+        } 
+        .linkHowTo{
+            background-color: $lightFontColor;
+            text-decoration: none;
+            color: $mediumPurple;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 30px;
+            @include displayFlex();
+            cursor: pointer;
+            font-weight: $superBold;
+            font-family: $nunitoFont;
+
+            &:hover{
+                transform: scale(1.05);
+            }
+        }
+    }
+    .ctaContainer{
+        border: 1px solid white;
+    }
+    .faqContainer{
+        border: 1px solid white;
+    }
+}
+

@@ -12,14 +12,15 @@ function App() {
     <Router>
       <Navbar /> 
       <main id="main">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/game" element={<Game />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/route/:id" element={<RouteDetails />} />
+        <Routes id="route">
+          <Route id="route" path="/" element={<Home />} />
+          <Route id="route" path="/game" element={<Game />} />
+          <Route id="route" path="/login" element={<Login />} />
+          <Route id="route" path="/register" element={<Register />} />
+          <Route id="route" path="/route/:id" element={<RouteDetails />} />
         </Routes>
       </main>
+      {/* <Footer />  */}
     </Router>
   );
 }

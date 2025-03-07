@@ -40,28 +40,30 @@ function Login() {
   };
 
   return (
-    <div>
-      <h2>Iniciar sesión</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="user_email"
-          placeholder="Email"
-          value={formData.user_email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="user_password"
-          placeholder="Contraseña"
-          value={formData.user_password}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Iniciar sesión</button>
-      </form>
-    </div>
+    <section>
+      <section>
+        <h2>Iniciar sesión</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            name="user_email"
+            placeholder="Email"
+            value={formData.user_email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            name="user_password"
+            placeholder="Contraseña"
+            value={formData.user_password}
+            onChange={handleChange}
+            required
+          />
+          <button type="submit">Iniciar sesión</button>
+        </form>
+      </section>
+    </section>
   );
 }
 

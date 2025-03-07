@@ -38,9 +38,11 @@ import MoneyIcon from '../assets/icons/money.png'
 import PetrolStorageIcon from '../assets/icons/petrol-storage.png'
 import xpIcon from '../assets/icons/xp.png'
 import DolarCoinIcon from '../assets/icons/dolar-coin.png'
+import PresentationImage from '../assets/backgrounds/presentation.png'
 
-
-
+export const landing = {
+    presentation: PresentationImage,
+}
 
 export const navMenuIcons = {
     home: HomeIcon,
