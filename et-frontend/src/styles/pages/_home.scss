@@ -86,7 +86,6 @@
             background-repeat: no-repeat;
             @include sizes(70%);
             z-index: 100;
-           
           }
     }
     .featuresContainer{
@@ -218,10 +217,79 @@
         }
     }
     .ctaContainer{
-        border: 1px solid white;
-    }
-    .faqContainer{
-        border: 1px solid white;
+        @include sizes(90%);
+        flex-direction: row;
+        gap: 25px;
+        font-family: $nunitoFont;
+        text-align: left;
+        
+        .leftCtaContainer{
+            display:grid;
+            @include sizes(50%);
+            overflow: hidden;
+            gap: 5px;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            justify-items: center;
+            justify-self: center;
+
+            img{
+                @include sizes(250px,250px);
+                object-fit: cover;
+                border-radius: 10px;
+
+            }
+        }
+        .rightCtaContainer{
+            @include sizes(60%);
+            @include displayFlex($flexDirection: column);
+            gap: 10px;
+
+            .cta{
+                border-radius: 50px;
+                @include sizes(70%);
+                @include displayFlex($justifyContent: space-between);
+                background-color: $mediumPurple;
+                gap: 10px;
+                transition: all 0.3s ease;
+                overflow: hidden;
+    
+                
+                h3{
+                    font-size: $slg;
+                    padding: 10px;
+                    background-color: $lightFontColor;
+                    @include sizes($height: 50px);
+                    color: $darkFontColor;
+                    @include displayFlex();
+                }
+                p{
+                    @include sizes();
+                    padding: 5px;
+                }
+                .linkCta{
+                    background-color: $lightFontColor;
+                    text-decoration: none;
+                    color: $mediumPurple;
+                    padding: 15px;
+                    margin-bottom: 15px;
+                    border-radius: 10px;
+                    font-size: 15px;
+                    @include displayFlex($flexDirection: row);
+                    cursor: pointer;
+                    font-weight: $superBold;
+                    font-family: $nunitoFont;
+    
+                    &:hover{
+                        transform: scale(1.05);
+                    }
+                }
+    
+                &:hover{
+                    box-shadow: 0px 0px 15px 1px $mediumPurple;
+                }
+            }
+        }
     }
 }
 

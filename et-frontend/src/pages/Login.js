@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../services/authService";
+import { employeesImages } from '../utils/Images'
+import { Link } from "react-router-dom";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -40,9 +42,12 @@ function Login() {
   };
 
   return (
-    <section>
-      <section>
-        <h2>Iniciar sesión</h2>
+    <section className="loginContainer">
+      <section className="leftLoginContainer">
+        <img src={employeesImages.happyEmployee} alt=""/>
+      </section>
+      <section className="rightLoginContainer">
+        <h1>Iniciar sesión</h1>
         <form onSubmit={handleSubmit}>
           <input
             type="email"
@@ -60,8 +65,9 @@ function Login() {
             onChange={handleChange}
             required
           />
-          <button type="submit">Iniciar sesión</button>
+          <button id="loginBtn" type="submit">Iniciar sesión</button>
         </form>
+        <p>¿Aún no tienes cuenta? <Link className="linkLoginReg" to="/register">Registrarme</Link></p>
       </section>
     </section>
   );

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../services/authService";
+import { Link } from "react-router-dom";
+import { landing } from '../utils/Images'
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -34,15 +36,21 @@ function Register() {
   };
 
   return (
-    <div>
-      <h2>Registro</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="user_name" placeholder="Nombre" value={formData.user_name} onChange={handleChange} required />
-        <input type="email" name="user_email" placeholder="Email" value={formData.user_email} onChange={handleChange} required />
-        <input type="password" name="user_password" placeholder="Contraseña" value={formData.user_password} onChange={handleChange} required />
-        <button type="submit">Registrarse</button>
-      </form>
-    </div>
+    <section className="registerContainer">
+      <section className="leftRegisterContainer">
+        <img src={landing.mitsubishi} alt=""/>
+      </section>
+      <section className="rightRegisterContainer">
+        <h1>Regístrate gratis</h1>
+        <form onSubmit={handleSubmit}>
+          <input type="text" name="user_name" placeholder="Nombre" value={formData.user_name} onChange={handleChange} required />
+          <input type="email" name="user_email" placeholder="Email" value={formData.user_email} onChange={handleChange} required />
+          <input type="password" name="user_password" placeholder="Contraseña" value={formData.user_password} onChange={handleChange} required />
+          <button id="regBtn" type="submit">Registrarse</button>
+        </form>
+        <p>¿Ya tienes cuenta? <Link className="linkLoginReg" to="/login">Iniciar sesión</Link></p>
+      </section>
+    </section>
   );
 }
 
