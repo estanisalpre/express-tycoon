@@ -1,0 +1,67 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+#leftMenu{
+    @include sizes(300px, 100vh);
+    @include displayFlex($justifyContent: space-between);
+    padding: 10px;
+    position: absolute;
+    left: 5px;
+    background-image: $standar-Normal-BackgroundImage;
+    box-shadow: $shadow;
+    gap: 10px;
+    cursor: default;
+    overflow: hidden;
+
+    img{
+        @include sizes(35px,auto);
+    }
+    .linkLeftMenu{
+        @include sizes(100%,40px);
+        padding: 10px;
+        font-family: $jersey20Font;
+        border: 0px;
+        background-color: transparent;
+        cursor: pointer;
+        border-radius: 5px;
+        @include displayFlex($flexDirection:row, $justifyContent: space-between);
+        gap: 5px;
+        transition: all 0.2s ease;
+        font-size: 18px;
+        color: $darkFontColor;
+        text-decoration: none;
+    }
+    .linkLeftMenu:hover{
+        background-color: $mediumPurple;
+        color: $lightFontColor;
+    }   
+    .socialMedia{
+        @include sizes(70%,$height: 50px);
+        @include displayFlex($flexDirection:row, $justifyContent: space-between);
+        gap: 5px;
+
+        img{
+            cursor: pointer;
+            @include sizes(20px,auto);
+            transition: all 0.2s ease;
+        }
+        img:hover{
+            transform: scale(1.1);
+        }
+    }
+    span{
+        font-size: $md;
+        @include sizes($height: 25px);
+        padding: 3px;
+        color: rgb(112, 112, 112);
+    }
+    .special-span{
+        border-bottom: 1px solid rgb(173, 173, 173);
+    }
+    .creditSpan{
+        @include displayFlex();
+    }
+}
+#leftMenu{
+    width: 250px;
+}

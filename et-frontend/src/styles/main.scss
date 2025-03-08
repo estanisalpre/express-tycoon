@@ -6,6 +6,8 @@
 @use './components/navbar';  
 @use './pages/game';  
 @use './components/playerMenu';
+@use './components/leftMenu';
+@use './components/rightMenu';
 @use './components/playerTopStats';
 @use './pages/home';
 @use './pages/login';

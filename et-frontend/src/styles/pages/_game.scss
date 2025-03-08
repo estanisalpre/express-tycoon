@@ -2,152 +2,45 @@
 @use '../utils/mixins' as *;
 
 #fatherContainer{
-    @include sizes(100vw, 94vh);
+    @include sizes(100vw, 100vh);
     @include displayFlex($flexDirection:row, $justifyContent: space-between);
-    margin-top: 50px;
-    padding: 10px;
     color: $darkFontColor;
     position: relative;
-
-    #leftMenu, #rightMenu{
-        @include sizes(300px);
-        @include displayFlex($justifyContent: space-between);
-        padding: 10px;
+    
+    .modal{
+        @include sizes(65%,83vh);
         background-image: $standar-Normal-BackgroundImage;
-        box-shadow: $shadow;
-        border-radius: 5px;
-        gap: 10px;
-        cursor: default;
+        border-radius: 10px;
+        overflow: hidden;
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        transform: translate(-50%);
 
-        img{
-            @include sizes(35px,auto);
-        }
-        .linkLeftMenu{
-            @include sizes(100%,40px);
-            padding: 10px;
-            border-radius: 5px;
-            @include displayFlex($flexDirection:row, $justifyContent: space-between);
-            gap: 5px;
-            transition: all 0.2s ease;
-            font-size: 18px;
-            color: $darkFontColor;
-            text-decoration: none;
-        }
-        .linkLeftMenu:hover{
+        h2{
             background-color: $mediumPurple;
-            color: $lightFontColor;
-        }   
-        .socialMedia{
-            @include sizes(70%,$height: 50px);
+            @include sizes($height:40px);
             @include displayFlex($flexDirection:row, $justifyContent: space-between);
-            gap: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            color: $lightFontColor;
 
-            img{
+            button{
+                border: none;
+                outline: none;
+                background-color: transparent;
                 cursor: pointer;
-                @include sizes(20px,auto);
-                transition: all 0.2s ease;
-            }
-            img:hover{
-                transform: scale(1.1);
-            }
-        }
-        span{
-            font-size: $md;
-            @include sizes($height: 25px);
-            padding: 3px;
-            color: rgb(112, 112, 112);
-        }
-        .special-span{
-            border-bottom: 1px solid rgb(173, 173, 173);
-        }
-        .creditSpan{
-            @include displayFlex();
-        }
-    }
-    #leftMenu{
-        width: 250px;
-    }
-    #rightMenu{
-        .playerProfileContainer{
-            @include sizes($height:270px);
-            @include displayFlex($justifyContent: space-between);
-            border-radius: 10px;
-            transition: all 1s ease;
-
-            img{
-                @include sizes(80%,auto);
-            }
-            .welcomeMessage{
-                @include sizes(100%,40px);
+                @include sizes(auto,100%);
                 @include displayFlex();
-                color: $darkFontColor;
-                font-size: $lg;
             }
         }
-        .playerProfileContainer:hover{
-            box-shadow: 0px 30px 20px 1px rgba(0, 0, 0, 0.226);
-        }
-        .playerStats{
+        
+        .modal-content{
             @include sizes();
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); 
-            grid-auto-rows: auto;
-            gap: 5px;
-
-            .stats{
-                @include sizes(100%, 70px);
-                @include displayFlex($flexDirection:row, $justifyContent: flex-start);
-                padding: 5px;
-                transition: all 0.2s ease;
-                border-radius: 10px;
-                color: $darkFontColor;
-                box-shadow: 0px 10px 5px 1px rgba(0, 0, 0, 0.097);
-                
-                &:hover {
-                    background-color: $mediumPurple;
-                    color: $lightFontColor;
-                }
-            }
-            .playerCompany,
-            .playerLevel,
-            .playerSuccessDeliveries{
-                grid-column: span 2;
-            }
-            .configBtn,
-            .editProfileBtn{
-                height: 50px;
-                cursor: pointer;
-                box-shadow: none;
-
-                &:hover{
-                    background-color: transparent;
-                    background-image: $gold-BackgroundImage;
-                    color: $darkFontColor;
-                }
-            }
-            .playerLevel{
-                justify-content: space-around;
-                img{
-                    @include sizes(auto,60%);
-                    transform: rotate(15deg);
-                }
-                background-image: $gold-BackgroundImage;
-                box-shadow: none;
-                color: $darkFontColor;
-                font-size: 30px;
-
-                &:hover{
-                    color: $darkFontColor;
-                }
-            }
-            .link{
-                padding: 5px;
-                border-radius: 5px;
-                text-decoration: none;
-                color: $lightFontColor;
-                background-color: $mediumPurple;
-                font-size: $md;
-            }
+            padding-bottom: 10px;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            overflow-x: hidden;  
         }
     }
 }
