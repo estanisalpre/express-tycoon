@@ -151,6 +151,10 @@ nav ul li {
   flex-direction: column;
   align-items: center;
   text-decoration: none;
+  border: 0px;
+  background-color: transparent;
+  font-family: "Jersey 20", serif;
+  cursor: pointer;
 }
 .playerMenu ul li .link span {
   width: 120%;

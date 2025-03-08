@@ -12,6 +12,16 @@ import ShareModal from './modals/ShareModal'
 import StartModal from './modals/StartModal'
 import SupportModal from './modals/SupportModal'
 import TutorialModal from './modals/TutorialModal'
+import CompaniesModal from './modals/CompaniesModal'
+import ConcessionaireModal from './modals/ConcessionaireModal'
+import EmployeesModal from './modals/EmployeesModal'
+import GaragesModal from './modals/GaragesModal'
+import GasStationModal from './modals/GasStationModal'
+import MaintenanceModal from './modals/MaintenanceModal'
+import MapModal from './modals/MapModal'
+import RealStateModal from './modals/RealStateModal'
+import RoutesModal from './modals/RoutesModal'
+import VehiclesModal from './modals/VehiclesModal'
 
 function CentralWall({ activeModal, setActiveModal }) {
   return (
@@ -29,6 +39,16 @@ function CentralWall({ activeModal, setActiveModal }) {
         {activeModal === "levels" && <LevelsModal onClose={() => setActiveModal("start")} />}
         {activeModal === "config" && <ConfigModal onClose={() => setActiveModal("start")} />}
         {activeModal === "edit-profile" && <EditProfileModal onClose={() => setActiveModal("start")} />}
+        {activeModal === "companies" && <CompaniesModal onClose={() => setActiveModal("start")} />}
+        {activeModal === "concessionaire" && <ConcessionaireModal onClose={() => setActiveModal("start")} />}
+        {activeModal === "employees" && <EmployeesModal onClose={() => setActiveModal("start")} />}
+        {activeModal === "garages" && <GaragesModal onClose={() => setActiveModal("start")} />}
+        {activeModal === "gas-station" && <GasStationModal onClose={() => setActiveModal("start")} />}
+        {activeModal === "maintenance" && <MaintenanceModal onClose={() => setActiveModal("start")} />}
+        {activeModal === "map" && <MapModal onClose={() => setActiveModal("start")} />}
+        {activeModal === "realState" && <RealStateModal onClose={() => setActiveModal("start")} />}
+        {activeModal === "routes" && <RoutesModal onClose={() => setActiveModal("start")} />}
+        {activeModal === "vehicles" && <VehiclesModal onClose={() => setActiveModal("start")} />}
     </section>
   );
 }

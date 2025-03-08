@@ -14,7 +14,7 @@ function Game() {
       <LeftWall setActiveModal={setActiveModal}/>
       <CentralWall activeModal={activeModal} setActiveModal={setActiveModal}/>
       <RightWall setActiveModal={setActiveModal}/>
-      <PlayerMenu/>
+      <PlayerMenu setActiveModal={setActiveModal}/>
     </section>
   );
 }

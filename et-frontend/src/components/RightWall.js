@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getUserData } from "../services/authService";
 import { navMenuIcons, globalImages, playerStatsIcon } from '../utils/Images';
 
-function LeftWall({setActiveModal}) {
+function RightWall({setActiveModal}) {
     const [userData, setUserData] = useState(null);
     const navigate = useNavigate(); 
 
@@ -75,4 +75,4 @@ function LeftWall({setActiveModal}) {
   );
 }
 
-export default LeftWall;
+export default RightWall;

@@ -29,6 +29,10 @@
                 @include sizes();
                 @include displayFlex();
                 text-decoration: none;
+                border: 0px;
+                background-color: transparent;
+                font-family: $jersey20Font;
+                cursor: pointer;
 
                 span{
                     @include sizes(120%,$height: 25px);
