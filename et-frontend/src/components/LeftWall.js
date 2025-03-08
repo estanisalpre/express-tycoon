@@ -1,7 +1,18 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import { socialIcons, navMenuIcons } from '../utils/Images';
 
 function LeftWall({ setActiveModal }) {
+  const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem("token"); 
+        localStorage.removeItem("userEmail"); 
+        localStorage.removeItem("userId"); 
+        localStorage.removeItem("userName");
+        localStorage.removeItem("firstTime"); 
+        navigate("/"); 
+    };
 
   return (
     <aside id="leftMenu">
@@ -19,7 +30,7 @@ function LeftWall({ setActiveModal }) {
       <span className="special-span">Contacto</span>
       <button class="linkLeftMenu" onClick={() => setActiveModal("contact")}><img src={navMenuIcons.contact} alt="Icon"/>Contacto</button>
       <button class="linkLeftMenu" onClick={() => setActiveModal("support")}><img src={navMenuIcons.support} alt="Icon"/>Ayuda & Soporte</button>
-      <button id="logoutBtn" class="linkLeftMenu"><img src={navMenuIcons.logout} alt="Icon"/>Salir</button>
+      <button id="logoutBtn" class="linkLeftMenu" onClick={handleLogout}><img src={navMenuIcons.logout} alt="Icon"/>Salir</button>
       <span className="special-span">Redes</span>
       <div className="socialMedia">
           <img src={socialIcons.youtubeLogo} alt="Youtube Channel Logo Redirection"/>
