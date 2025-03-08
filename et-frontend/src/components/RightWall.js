@@ -3,9 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { getUserData } from "../services/authService";
 import { navMenuIcons, globalImages, playerStatsIcon } from '../utils/Images';
 
-function LeftWall() {
+function LeftWall({setActiveModal}) {
     const [userData, setUserData] = useState(null);
-    const [setActiveModal] = useState(null); 
     const navigate = useNavigate(); 
 
     useEffect(() => {

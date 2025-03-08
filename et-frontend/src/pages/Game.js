@@ -13,7 +13,7 @@ function Game() {
       <PlayerTopStats/>
       <LeftWall setActiveModal={setActiveModal}/>
       <CentralWall activeModal={activeModal} setActiveModal={setActiveModal}/>
-      <RightWall/>
+      <RightWall setActiveModal={setActiveModal}/>
       <PlayerMenu/>
     </section>
   );
