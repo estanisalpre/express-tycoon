@@ -46,6 +46,12 @@ import MitsuMountainImage from '../assets/backgrounds/mitsu-mountain.png'
 import MercedesFarmImage from '../assets/backgrounds/truck-farm.png'
 //Employees
 import HappyEmployeeImage from '../assets/employee/happy-employee.png'
+//UI
+import CloseIcon from '../assets/ui/close.png'
+
+export const ui = {
+    close: CloseIcon,
+}
 
 export const landing = {
     presentation: PresentationImage,

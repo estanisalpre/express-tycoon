@@ -9,6 +9,7 @@ nav {
     z-index: 10000;
     top: 0px;
     @include displayFlex($flexDirection: row, $justifyContent: space-between);
+    display: none;
 
     img{
         @include sizes(auto,100%);

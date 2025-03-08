@@ -24,6 +24,7 @@ nav {
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
+  display: none;
 }
 nav img {
   width: auto;
@@ -54,181 +55,56 @@ nav ul li {
 
 #fatherContainer {
   width: 100vw;
-  height: 94vh;
+  height: 100vh;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-  margin-top: 50px;
-  padding: 10px;
   color: #2c2c2c;
   position: relative;
 }
-#fatherContainer #leftMenu, #fatherContainer #rightMenu {
-  width: 300px;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
+#fatherContainer .modal {
+  width: 65%;
+  height: 83vh;
   background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
-  box-shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);
-  border-radius: 5px;
-  gap: 10px;
-  cursor: default;
+  border-radius: 10px;
+  overflow: hidden;
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translate(-50%);
 }
-#fatherContainer #leftMenu img, #fatherContainer #rightMenu img {
-  width: 35px;
-  height: auto;
-}
-#fatherContainer #leftMenu .linkLeftMenu, #fatherContainer #rightMenu .linkLeftMenu {
+#fatherContainer .modal h2 {
+  background-color: #5A56DB;
   width: 100%;
   height: 40px;
-  padding: 10px;
-  border-radius: 5px;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-  gap: 5px;
-  transition: all 0.2s ease;
-  font-size: 18px;
-  color: #2c2c2c;
-  text-decoration: none;
-}
-#fatherContainer #leftMenu .linkLeftMenu:hover, #fatherContainer #rightMenu .linkLeftMenu:hover {
-  background-color: #5A56DB;
+  padding-left: 10px;
+  padding-right: 10px;
   color: #f1f1f1;
 }
-#fatherContainer #leftMenu .socialMedia, #fatherContainer #rightMenu .socialMedia {
-  width: 70%;
-  height: 50px;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  align-items: center;
-  gap: 5px;
-}
-#fatherContainer #leftMenu .socialMedia img, #fatherContainer #rightMenu .socialMedia img {
+#fatherContainer .modal h2 button {
+  border: none;
+  outline: none;
+  background-color: transparent;
   cursor: pointer;
-  width: 20px;
-  height: auto;
-  transition: all 0.2s ease;
-}
-#fatherContainer #leftMenu .socialMedia img:hover, #fatherContainer #rightMenu .socialMedia img:hover {
-  transform: scale(1.1);
-}
-#fatherContainer #leftMenu span, #fatherContainer #rightMenu span {
-  font-size: 16px;
-  width: 100%;
-  height: 25px;
-  padding: 3px;
-  color: rgb(112, 112, 112);
-}
-#fatherContainer #leftMenu .special-span, #fatherContainer #rightMenu .special-span {
-  border-bottom: 1px solid rgb(173, 173, 173);
-}
-#fatherContainer #leftMenu .creditSpan, #fatherContainer #rightMenu .creditSpan {
+  width: auto;
+  height: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
-#fatherContainer #leftMenu {
-  width: 250px;
-}
-#fatherContainer #rightMenu .playerProfileContainer {
-  width: 100%;
-  height: 270px;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 10px;
-  transition: all 1s ease;
-}
-#fatherContainer #rightMenu .playerProfileContainer img {
-  width: 80%;
-  height: auto;
-}
-#fatherContainer #rightMenu .playerProfileContainer .welcomeMessage {
-  width: 100%;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  color: #2c2c2c;
-  font-size: 22px;
-}
-#fatherContainer #rightMenu .playerProfileContainer:hover {
-  box-shadow: 0px 30px 20px 1px rgba(0, 0, 0, 0.226);
-}
-#fatherContainer #rightMenu .playerStats {
+#fatherContainer .modal .modal-content {
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: auto;
-  gap: 5px;
-}
-#fatherContainer #rightMenu .playerStats .stats {
-  width: 100%;
-  height: 70px;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: row;
-  align-items: center;
-  padding: 5px;
-  transition: all 0.2s ease;
-  border-radius: 10px;
-  color: #2c2c2c;
-  box-shadow: 0px 10px 5px 1px rgba(0, 0, 0, 0.097);
-}
-#fatherContainer #rightMenu .playerStats .stats:hover {
-  background-color: #5A56DB;
-  color: #f1f1f1;
-}
-#fatherContainer #rightMenu .playerStats .playerCompany,
-#fatherContainer #rightMenu .playerStats .playerLevel,
-#fatherContainer #rightMenu .playerStats .playerSuccessDeliveries {
-  grid-column: span 2;
-}
-#fatherContainer #rightMenu .playerStats .configBtn,
-#fatherContainer #rightMenu .playerStats .editProfileBtn {
-  height: 50px;
-  cursor: pointer;
-  box-shadow: none;
-}
-#fatherContainer #rightMenu .playerStats .configBtn:hover,
-#fatherContainer #rightMenu .playerStats .editProfileBtn:hover {
-  background-color: transparent;
-  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
-  color: #2c2c2c;
-}
-#fatherContainer #rightMenu .playerStats .playerLevel {
-  justify-content: space-around;
-  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
-  box-shadow: none;
-  color: #2c2c2c;
-  font-size: 30px;
-}
-#fatherContainer #rightMenu .playerStats .playerLevel img {
-  width: auto;
-  height: 60%;
-  transform: rotate(15deg);
-}
-#fatherContainer #rightMenu .playerStats .playerLevel:hover {
-  color: #2c2c2c;
-}
-#fatherContainer #rightMenu .playerStats .link {
-  padding: 5px;
-  border-radius: 5px;
-  text-decoration: none;
-  color: #f1f1f1;
-  background-color: #5A56DB;
-  font-size: 16px;
+  padding-bottom: 10px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  overflow-x: hidden;
 }
 
 .playerMenu {
@@ -297,6 +173,212 @@ nav ul li {
 }
 .playerMenu ul .specialLi {
   background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+}
+
+#leftMenu {
+  width: 300px;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  position: absolute;
+  left: 5px;
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  box-shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);
+  gap: 10px;
+  cursor: default;
+  overflow: hidden;
+}
+#leftMenu img {
+  width: 35px;
+  height: auto;
+}
+#leftMenu .linkLeftMenu {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  font-family: "Jersey 20", serif;
+  border: 0px;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+  font-size: 18px;
+  color: #2c2c2c;
+  text-decoration: none;
+}
+#leftMenu .linkLeftMenu:hover {
+  background-color: #5A56DB;
+  color: #f1f1f1;
+}
+#leftMenu .socialMedia {
+  width: 70%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+#leftMenu .socialMedia img {
+  cursor: pointer;
+  width: 20px;
+  height: auto;
+  transition: all 0.2s ease;
+}
+#leftMenu .socialMedia img:hover {
+  transform: scale(1.1);
+}
+#leftMenu span {
+  font-size: 16px;
+  width: 100%;
+  height: 25px;
+  padding: 3px;
+  color: rgb(112, 112, 112);
+}
+#leftMenu .special-span {
+  border-bottom: 1px solid rgb(173, 173, 173);
+}
+#leftMenu .creditSpan {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+#leftMenu {
+  width: 250px;
+}
+
+#rightMenu {
+  width: 300px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  box-shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);
+  position: absolute;
+  right: 5px;
+  gap: 10px;
+  cursor: default;
+  overflow: hidden;
+}
+#rightMenu .playerProfileContainer {
+  width: 100%;
+  height: 270px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  transition: all 1s ease;
+}
+#rightMenu .playerProfileContainer img {
+  width: 80%;
+  height: auto;
+}
+#rightMenu .playerProfileContainer .welcomeMessage {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: #2c2c2c;
+  font-size: 22px;
+}
+#rightMenu .playerProfileContainer:hover {
+  box-shadow: 0px 30px 20px 1px rgba(0, 0, 0, 0.226);
+}
+#rightMenu .playerStats {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+  gap: 5px;
+}
+#rightMenu .playerStats .stats {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px;
+  transition: all 0.2s ease;
+  border-radius: 10px;
+  color: #2c2c2c;
+  box-shadow: 0px 10px 5px 1px rgba(0, 0, 0, 0.097);
+}
+#rightMenu .playerStats .stats:hover {
+  background-color: #5A56DB;
+  color: #f1f1f1;
+}
+#rightMenu .playerStats .playerCompany,
+#rightMenu .playerStats .playerLevel,
+#rightMenu .playerStats .playerSuccessDeliveries {
+  grid-column: span 2;
+}
+#rightMenu .playerStats .configBtn,
+#rightMenu .playerStats .editProfileBtn {
+  height: 50px;
+  cursor: pointer;
+  box-shadow: none;
+  cursor: pointer;
+}
+#rightMenu .playerStats .configBtn button,
+#rightMenu .playerStats .editProfileBtn button {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  font-family: "Jersey 20", serif;
+  cursor: pointer;
+}
+#rightMenu .playerStats .configBtn:hover,
+#rightMenu .playerStats .editProfileBtn:hover {
+  background-color: transparent;
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  color: #2c2c2c;
+}
+#rightMenu .playerStats .playerLevel {
+  justify-content: space-around;
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  box-shadow: none;
+  color: #2c2c2c;
+  font-size: 30px;
+}
+#rightMenu .playerStats .playerLevel img {
+  width: auto;
+  height: 60%;
+  transform: rotate(15deg);
+}
+#rightMenu .playerStats .playerLevel:hover {
+  color: #2c2c2c;
+}
+#rightMenu .playerStats .link {
+  padding: 5px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #f1f1f1;
+  background-color: #5A56DB;
+  font-size: 16px;
+  border: none;
+  font-family: "Jersey 20", serif;
+  cursor: pointer;
 }
 
 .playerTopStatsContainer {
