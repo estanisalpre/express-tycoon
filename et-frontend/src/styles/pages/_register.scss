@@ -2,7 +2,7 @@
 @use '../utils/mixins' as *;
 @use '../utils/animations' as *;
 
-.loginContainer{
+.registerContainer{
     @include sizes($height: 100vh);
     @include displayFlex($flexDirection:row);
 
@@ -10,13 +10,13 @@
         @include sizes();
         @include displayFlex();
     }
-    .leftLoginContainer{
+    .leftRegisterContainer{
         img{
             @include sizes(70%,auto);
-            border-radius: 10px;
+            border-radius: 10px; 
         }
     }
-    .rightLoginContainer{
+    .rightRegisterContainer{
         h1{
             font-family: $afacadFont;
             font-weight: $superBold;
@@ -41,7 +41,7 @@
                 font-size: $lg;
                 color: $lightFontColor;
             }
-            #loginBtn{
+            #regBtn{
                 @include sizes(60%,50px);
                 @include displayFlex();
                 border: 0px;

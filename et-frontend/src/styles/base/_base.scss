@@ -2,7 +2,9 @@
 @use '../utils/mixins' as *;  
 
 html{
-    @include sizes();
-    overflow-y: hidden;
-    overflow-x: hidden;
+    width: 100%;
+    min-height: 100vh;
+    scrollbar-width: none;
+    /* overflow-y: hidden;
+    overflow-x: hidden; */
 }

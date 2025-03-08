@@ -6,9 +6,10 @@
 
 html {
   width: 100%;
-  height: 100%;
-  overflow-y: hidden;
-  overflow-x: hidden;
+  min-height: 100vh;
+  scrollbar-width: none;
+  /* overflow-y: hidden;
+  overflow-x: hidden; */
 }
 
 nav {
@@ -17,6 +18,7 @@ nav {
   width: 100%;
   height: 50px;
   position: fixed;
+  z-index: 10000;
   top: 0px;
   display: flex;
   justify-content: space-between;
@@ -343,6 +345,548 @@ nav ul li {
   align-items: flex-start;
 }
 
+@keyframes btn-move-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.landingContainer {
+  margin-top: 50px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+.landingContainer .presentationContainer,
+.landingContainer .featuresContainer,
+.landingContainer .aboutContainer,
+.landingContainer .howToPlayContainer,
+.landingContainer .ctaContainer,
+.landingContainer .faqContainer {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.landingContainer .presentationContainer {
+  flex-direction: row;
+  height: 750px;
+  position: relative;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.landingContainer .presentationContainer div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.landingContainer .presentationContainer .leftPresentation {
+  gap: 10px;
+  width: 70%;
+  z-index: 101;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.landingContainer .presentationContainer .leftPresentation h1 {
+  width: 80%;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Afacad", serif;
+  font-weight: 800;
+  font-size: 80px;
+  line-height: 70px;
+  color: #f1f1f1;
+}
+.landingContainer .presentationContainer .leftPresentation h2 {
+  font-family: "Nunito", serif;
+  color: #9707D9;
+  font-size: 22px;
+  width: 80%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-start;
+}
+.landingContainer .presentationContainer .leftPresentation .presBtnContainer {
+  width: 80%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-start;
+}
+.landingContainer .presentationContainer .leftPresentation .presBtnContainer .ctaBtn {
+  background-color: #f1f1f1;
+  text-decoration: none;
+  color: #5A56DB;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 800;
+  animation: btn-move-animation 2s ease 0s 1;
+  animation-delay: 5s;
+  font-family: "Nunito", serif;
+}
+.landingContainer .presentationContainer .leftPresentation .presBtnContainer .ctaBtn:hover {
+  transform: scale(1.1);
+  animation: rotar 2s ease-in-out 0s 1;
+}
+.landingContainer .presentationContainer .rightPresentation {
+  background-image: url("../assets/backgrounds/presentation.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 70%;
+  height: 100%;
+  z-index: 100;
+}
+.landingContainer .featuresContainer {
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  width: 90%;
+  height: 100%;
+  box-shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);
+  border-radius: 10px;
+  color: #2c2c2c;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 50px;
+  gap: 15px;
+  cursor: default;
+  z-index: 101;
+  margin-top: -25px;
+}
+.landingContainer .featuresContainer .aboutContainer {
+  width: 90%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-family: "Nunito", serif;
+  box-shadow: 0px;
+  gap: 10px;
+}
+.landingContainer .featuresContainer .aboutContainer h2 {
+  font-size: 60px;
+  color: #9707D9;
+  font-weight: 900;
+}
+.landingContainer .featuresContainer .aboutContainer p {
+  font-size: 22px;
+  align-items: flex-start;
+}
+.landingContainer .featuresContainer .aboutContainer h3 {
+  font-family: "Nunito", serif;
+  font-weight: 800;
+  font-size: 45px;
+  color: #9707D9;
+  align-items: flex-start;
+}
+.landingContainer .featuresContainer div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);
+  width: 350px;
+  height: 200px;
+  gap: 10px;
+}
+.landingContainer .featuresContainer div h3 {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  color: #5A56DB;
+  font-size: 22px;
+}
+.landingContainer .featuresContainer div p {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+  font-family: "Nunito", serif;
+}
+.landingContainer .featuresContainer div:hover {
+  background-color: rgb(214, 221, 255);
+}
+.landingContainer .howToPlayContainer {
+  width: 100%;
+  height: 100%;
+  gap: 15px;
+  font-family: "Afacad", serif;
+  padding: 50px;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.landingContainer .howToPlayContainer .articleHowTo {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.landingContainer .howToPlayContainer .articleHowTo h2 {
+  font-weight: 900;
+  font-size: 80px;
+  color: #f1f1f1;
+}
+.landingContainer .howToPlayContainer .articleHowTo p {
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+}
+.landingContainer .howToPlayContainer div {
+  width: 300px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-image: linear-gradient(135deg, #0785D9 0%, #9707D9 100%);
+}
+.landingContainer .howToPlayContainer div h3 {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 22px;
+}
+.landingContainer .howToPlayContainer div p {
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.landingContainer .howToPlayContainer .linkHowTo {
+  background-color: #f1f1f1;
+  text-decoration: none;
+  color: #5A56DB;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 800;
+  font-family: "Nunito", serif;
+}
+.landingContainer .howToPlayContainer .linkHowTo:hover {
+  transform: scale(1.05);
+}
+.landingContainer .ctaContainer {
+  width: 90%;
+  height: 100%;
+  flex-direction: row;
+  gap: 25px;
+  font-family: "Nunito", serif;
+  text-align: left;
+}
+.landingContainer .ctaContainer .leftCtaContainer {
+  display: grid;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  gap: 5px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  justify-items: center;
+  justify-self: center;
+}
+.landingContainer .ctaContainer .leftCtaContainer img {
+  width: 250px;
+  height: 250px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+.landingContainer .ctaContainer .rightCtaContainer {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.landingContainer .ctaContainer .rightCtaContainer .cta {
+  border-radius: 50px;
+  width: 70%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  background-color: #5A56DB;
+  gap: 10px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+.landingContainer .ctaContainer .rightCtaContainer .cta h3 {
+  font-size: 30px;
+  padding: 10px;
+  background-color: #f1f1f1;
+  width: 100%;
+  height: 50px;
+  color: #2c2c2c;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.landingContainer .ctaContainer .rightCtaContainer .cta p {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+}
+.landingContainer .ctaContainer .rightCtaContainer .cta .linkCta {
+  background-color: #f1f1f1;
+  text-decoration: none;
+  color: #5A56DB;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 800;
+  font-family: "Nunito", serif;
+}
+.landingContainer .ctaContainer .rightCtaContainer .cta .linkCta:hover {
+  transform: scale(1.05);
+}
+.landingContainer .ctaContainer .rightCtaContainer .cta:hover {
+  box-shadow: 0px 0px 15px 1px #5A56DB;
+}
+
+.loginContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+.loginContainer section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.loginContainer .leftLoginContainer img {
+  width: 70%;
+  height: auto;
+  border-radius: 10px;
+}
+.loginContainer .rightLoginContainer h1 {
+  font-family: "Afacad", serif;
+  font-weight: 800;
+  font-size: 45px;
+  color: #f1f1f1;
+  width: 80%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.loginContainer .rightLoginContainer form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 250px;
+}
+.loginContainer .rightLoginContainer form input {
+  width: 60%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border: 0px;
+  outline: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-family: "Nunito", serif;
+  font-size: 22px;
+  color: #f1f1f1;
+}
+.loginContainer .rightLoginContainer form #loginBtn {
+  width: 60%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border: 0px;
+  outline: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-family: "Nunito", serif;
+  font-size: 22px;
+  color: #f1f1f1;
+  background: #9707D9;
+  cursor: pointer;
+}
+.loginContainer .rightLoginContainer p {
+  width: 60%;
+  height: 20px;
+  font-family: "Nunito", serif;
+  font-size: 16px;
+}
+.loginContainer .rightLoginContainer p .linkLoginReg {
+  text-decoration: none;
+  color: #9707D9;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.registerContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+.registerContainer section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.registerContainer .leftRegisterContainer img {
+  width: 70%;
+  height: auto;
+  border-radius: 10px;
+}
+.registerContainer .rightRegisterContainer h1 {
+  font-family: "Afacad", serif;
+  font-weight: 800;
+  font-size: 45px;
+  color: #f1f1f1;
+  width: 80%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.registerContainer .rightRegisterContainer form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 250px;
+}
+.registerContainer .rightRegisterContainer form input {
+  width: 60%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border: 0px;
+  outline: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-family: "Nunito", serif;
+  font-size: 22px;
+  color: #f1f1f1;
+}
+.registerContainer .rightRegisterContainer form #regBtn {
+  width: 60%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border: 0px;
+  outline: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-family: "Nunito", serif;
+  font-size: 22px;
+  color: #f1f1f1;
+  background: #9707D9;
+  cursor: pointer;
+}
+.registerContainer .rightRegisterContainer p {
+  width: 60%;
+  height: 20px;
+  font-family: "Nunito", serif;
+  font-size: 16px;
+}
+.registerContainer .rightRegisterContainer p .linkLoginReg {
+  text-decoration: none;
+  color: #9707D9;
+  font-weight: 800;
+  cursor: pointer;
+}
+
 body {
   font-family: "Jersey 20", serif;
   background: linear-gradient(60deg, #29323c 0%, #22282e 100%);
@@ -350,8 +894,7 @@ body {
   background-attachment: fixed;
   color: #f1f1f1;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100vh;
+  flex-direction: column;
+  min-height: 100%;
   width: 100%;
 }/*# sourceMappingURL=main.css.map */

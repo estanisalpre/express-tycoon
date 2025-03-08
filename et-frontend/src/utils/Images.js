@@ -38,9 +38,26 @@ import MoneyIcon from '../assets/icons/money.png'
 import PetrolStorageIcon from '../assets/icons/petrol-storage.png'
 import xpIcon from '../assets/icons/xp.png'
 import DolarCoinIcon from '../assets/icons/dolar-coin.png'
+import PresentationImage from '../assets/backgrounds/presentation.png'
+//Trucks
+import FurgonImage from '../assets/backgrounds/furgon-cta.png'
+import ScaniaImage from '../assets/backgrounds/scania-cars.png'
+import MitsuMountainImage from '../assets/backgrounds/mitsu-mountain.png'
+import MercedesFarmImage from '../assets/backgrounds/truck-farm.png'
+//Employees
+import HappyEmployeeImage from '../assets/employee/happy-employee.png'
 
+export const landing = {
+    presentation: PresentationImage,
+    furgon: FurgonImage,
+    scania: ScaniaImage,
+    mitsubishi: MitsuMountainImage,
+    mercedesFarm: MercedesFarmImage,
+}
 
-
+export const employeesImages = {
+    happyEmployee: HappyEmployeeImage,
+}
 
 export const navMenuIcons = {
     home: HomeIcon,

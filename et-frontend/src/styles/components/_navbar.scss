@@ -6,6 +6,7 @@ nav {
     padding: 10px;
     @include sizes($height: 50px);
     position: fixed;
+    z-index: 10000;
     top: 0px;
     @include displayFlex($flexDirection: row, $justifyContent: space-between);
 

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../services/authService";
+import { employeesImages } from '../utils/Images'
+import { Link } from "react-router-dom";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -40,28 +42,34 @@ function Login() {
   };
 
   return (
-    <div>
-      <h2>Iniciar sesión</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="user_email"
-          placeholder="Email"
-          value={formData.user_email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="user_password"
-          placeholder="Contraseña"
-          value={formData.user_password}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Iniciar sesión</button>
-      </form>
-    </div>
+    <section className="loginContainer">
+      <section className="leftLoginContainer">
+        <img src={employeesImages.happyEmployee} alt=""/>
+      </section>
+      <section className="rightLoginContainer">
+        <h1>Iniciar sesión</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            name="user_email"
+            placeholder="Email"
+            value={formData.user_email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            name="user_password"
+            placeholder="Contraseña"
+            value={formData.user_password}
+            onChange={handleChange}
+            required
+          />
+          <button id="loginBtn" type="submit">Iniciar sesión</button>
+        </form>
+        <p>¿Aún no tienes cuenta? <Link className="linkLoginReg" to="/register">Registrarme</Link></p>
+      </section>
+    </section>
   );
 }
 
