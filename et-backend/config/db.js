@@ -1,6 +1,6 @@
 const mysql = require("mysql2");
 
-// Configuración de la base de datos
+// Config
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -8,7 +8,7 @@ const db = mysql.createConnection({
     database: "express-tycoon"
 });
 
-// Conectar a MySQL
+// Connection test
 db.connect(err => {
     if (err) {
         console.error("❌ Error al conectar a MySQL:", err);

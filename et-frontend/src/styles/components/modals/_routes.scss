@@ -1,0 +1,154 @@
+@use '../../utils/vars' as *;
+@use '../../utils/mixins' as *;
+
+.modal-content-routes{
+    @include sizes();
+    @include displayFlex();
+    padding: 10px;
+    position: relative;
+
+    div{
+        @include sizes();
+        @include displayFlex($justifyContent:space-between);
+        padding-bottom: 10px;
+
+        .noRoutesSpan{
+            @include sizes();
+            @include displayFlex();
+        }
+        .route-list{
+            @include sizes();
+            @include displayFlex();
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 5px;
+            padding-top: 10px;
+
+            li{
+                list-style: none;
+                @include sizes(100%,$height:40px);
+                @include displayFlex($flexDirection:row, $justifyContent: space-between);
+                gap: 10px;
+                align-items: center;
+                border-radius: 5px;
+                background-color: $mediumPurple;
+                padding: 5px;
+                color: $lightFontColor;
+
+                strong{
+                    font-weight: $noBold;
+                }
+
+                select{
+                    border: none;
+                    padding: 5px;
+                    background-color: $lightFontColor;
+                    color: $darkFontColor;
+                    font-family: $jersey20Font;
+                    border-radius: 5px;
+                    outline: none;
+                }
+
+                img{
+                    @include sizes(auto,70%);
+                    cursor: pointer;
+                }
+            }
+        }
+        .initialBtns{
+            @include sizes(50%,$height: 50px);
+        }
+    }
+    .create-route-modal{
+        @include sizes();
+        backdrop-filter: blur(5px);
+        position: absolute;
+        z-index: 1000;
+        @include displayFlex();
+        
+        div{
+            background-image: $standar-Normal-BackgroundImage;
+            @include sizes(50%,60%);
+            @include displayFlex($justifyContent: space-between);
+            box-shadow: $shadow;
+            border-radius: 10px;
+            overflow: hidden;
+            padding-bottom: 0px;
+
+            h3{
+                background-color: $mediumPurple;
+                color: $lightFontColor;
+                font-size: $lg;
+                @include sizes($height: 40px);
+                @include displayFlex();
+                align-items: flex-start;
+                padding-left: 10px;
+            }
+            label{
+                @include sizes(80%,50%);
+                @include displayFlex();
+
+                select{
+                    border: 0px;
+                    border-radius: 10px;
+                    margin-top: 10px;
+                    @include sizes(80%,$height: 40px);
+                    font-family: $jersey20Font;
+                    outline: none;
+                }
+                input{
+                    border: none;
+                    outline: none;
+                    background-color: transparent;
+                    color: $darkFontColor;
+                    padding: 5px;
+                    @include sizes(80%,$height: 40px);
+                    border-radius: 5px;
+                    background-color: $lightFontColor;
+                    font-family: $jersey20Font;
+                }
+                ul{
+                    @include sizes(80%,80%);
+                    gap: 5px;
+
+                    li{
+                        list-style: none;
+                        padding: 5px;
+                        @include sizes($height:30px);
+                        border-radius: 5px;
+                        border: 1px solid #ccc;
+                        @include displayFlex();
+                        cursor: pointer;
+                    }
+                }
+            } 
+        }
+        .createRouteBtns{
+            box-shadow: none;
+            @include sizes($height: 50px);
+            @include displayFlex($flexDirection: row);
+            gap: 5px;
+            border-radius: 0px;
+            
+
+            button{
+                border: none;
+                background-color: $mediumPurple;
+                color: $lightFontColor;
+                font-family: $jersey20Font;
+                padding: 5px;
+                @include displayFlex();
+                @include sizes(100px,90%);
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: $lg;
+            }
+            button:first-child{
+                color: $darkFontColor;
+                background-image: $gold-BackgroundImage;
+                border-radius: 5px;
+            }
+        }
+    }
+    
+}

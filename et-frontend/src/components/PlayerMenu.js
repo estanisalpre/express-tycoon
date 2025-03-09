@@ -5,7 +5,7 @@ function PlayerMenu({setActiveModal}) {
   return (
     <section className='playerMenu'>
       <ul>
-        <li><button disabled className='link' onClick={() => setActiveModal("map")}><span>Mapa</span><img src={playerMenu.map} alt=''/></button></li>
+        <li><button className='link' onClick={() => setActiveModal("trips")}><span>Mis viajes</span><img src={playerMenu.map} alt=''/></button></li>
         <li><button className='link' onClick={() => setActiveModal("garages")}><span>Mis Garajes</span><img src={playerMenu.garage} alt=''/></button></li>
         <li><button className='link' onClick={() => setActiveModal("vehicles")}><span>Mis Vehículos</span><img src={playerMenu.vehicle} alt=''/></button></li>
         <li><button className='link' onClick={() => setActiveModal("routes")}><span>Mis Rutas</span><img src={playerMenu.route} alt=''/></button></li>
