@@ -22,7 +22,6 @@ router.post("/register", (req, res) => {
     return res.status(400).json({ success: false, message: "Todos los campos son obligatorios." });
   }
 
-  // Verificar si el correo ya está registrado
   const checkEmailQuery = "SELECT * FROM players WHERE user_email = ?";
   db.query(checkEmailQuery, [user_email], async (err, results) => {
     if (err) {
@@ -67,7 +66,6 @@ router.post("/login", (req, res) => {
   
       const user = results[0];
   
-      // Comparar contraseñas usando bcrypt
       const isPasswordValid = await bcrypt.compare(user_password, user.user_password);
   
       if (!isPasswordValid) {
@@ -99,6 +97,18 @@ router.post("/login", (req, res) => {
       }
     });
 });
+
+// Save initial player city
+router.post("/players/set-sede", (req, res) => {
+    const { user_id, sede } = req.body;
   
+    const query = "UPDATE players SET sede = ?, first_time = 0 WHERE user_id = ?";
+    db.query(query, [sede, user_id], (err, results) => {
+      if (err) {
+        return res.status(500).json({ error: "Error al guardar la ciudad de inicio" });
+      }
+      res.json({ success: true, message: "Ciudad de inicio guardada correctamente." });
+    });
+});
 
 module.exports = router;

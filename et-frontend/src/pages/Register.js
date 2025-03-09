@@ -30,7 +30,6 @@ function Register() {
       const response = await registerUser(formData);
   
       if (response.status === 200) {
-        alert("Usuario registrado con éxito. Ahora inicia sesión.");
         navigate("/login");
       } else {
         setError(response.message || "Ocurrió un error inesperado. Inténtalo de nuevo.");
