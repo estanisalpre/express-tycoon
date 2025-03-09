@@ -56,25 +56,6 @@ router.post("/buy", (req, res) => {
     });
 });
 
-router.get("/:userId", (req, res) => {
-  const { userId } = req.params;
-
-  const sql = `
-    SELECT g.garage_id, g.city_id, c.city_name, g.garage_size
-    FROM garages g
-    JOIN cities c ON g.city_id = c.city_id
-    WHERE g.player_id = ?
-  `;
-
-  db.query(sql, [userId], (err, result) => {
-    if (err) {
-      console.error("Error al obtener garajes:", err);
-      return res.status(500).json({ error: "Error en el servidor" });
-    }
-    res.json(result);
-  });
-});
-
 /* // Expandir un garaje
 router.post("/expand", (req, res) => {
   const { garage_id, cost } = req.body;

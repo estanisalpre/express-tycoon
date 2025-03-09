@@ -18,18 +18,18 @@ function LeftWall({ setActiveModal }) {
     <aside id="leftMenu">
       <span className="special-span">Redirecciones</span>
       <button class="linkLeftMenu" onClick={() => setActiveModal("start")}><img src={navMenuIcons.home} alt="Icon"/>Inicio</button>
-      <button class="linkLeftMenu" onClick={() => setActiveModal("about")}><img src="#" alt="Icon"/>Sobre ExpressTycoon</button>
+      <button disabled class="linkLeftMenu" onClick={() => setActiveModal("about")}><img src="#" alt="Icon"/>Sobre ExpressTycoon</button>
       <span className="special-span">Funcionalidades</span>
       <button class="linkLeftMenu" onClick={() => setActiveModal("ranking")}><img src={navMenuIcons.ranking} alt="Icon"/>Ranking Global</button>
-      <button class="linkLeftMenu" onClick={() => setActiveModal("tutorial")}><img src={navMenuIcons.tutorial} alt="Icon"/>Tutorial</button>
-      <button class="linkLeftMenu" onClick={() => setActiveModal("share")}><img src={navMenuIcons.share} alt="Icon"/>Invitar amigo(s)</button>
+      <button disabled class="linkLeftMenu" onClick={() => setActiveModal("tutorial")}><img src={navMenuIcons.tutorial} alt="Icon"/>Tutorial</button>
+      <button disabled class="linkLeftMenu" onClick={() => setActiveModal("share")}><img src={navMenuIcons.share} alt="Icon"/>Invitar amigo(s)</button>
       <span className="special-span">Información</span>
-      <button class="linkLeftMenu" onClick={() => setActiveModal("events")}><img src={navMenuIcons.events} alt="Icon"/>Eventos & Noticias</button>
-      <button class="linkLeftMenu" onClick={() => setActiveModal("faqs")}><img src={navMenuIcons.questions} alt="Icon"/>Preguntas Frecuentes</button>
-      <button class="linkLeftMenu" onClick={() => setActiveModal("security")}><img src={navMenuIcons.security} alt="Icon"/>Seguridad</button>
+      <button disabled class="linkLeftMenu" onClick={() => setActiveModal("events")}><img src={navMenuIcons.events} alt="Icon"/>Eventos & Noticias</button>
+      <button disabled class="linkLeftMenu" onClick={() => setActiveModal("faqs")}><img src={navMenuIcons.questions} alt="Icon"/>Preguntas Frecuentes</button>
+      <button disabled class="linkLeftMenu" onClick={() => setActiveModal("security")}><img src={navMenuIcons.security} alt="Icon"/>Seguridad</button>
       <span className="special-span">Contacto</span>
-      <button class="linkLeftMenu" onClick={() => setActiveModal("contact")}><img src={navMenuIcons.contact} alt="Icon"/>Contacto</button>
-      <button class="linkLeftMenu" onClick={() => setActiveModal("support")}><img src={navMenuIcons.support} alt="Icon"/>Ayuda & Soporte</button>
+      <button disabled class="linkLeftMenu" onClick={() => setActiveModal("contact")}><img src={navMenuIcons.contact} alt="Icon"/>Contacto</button>
+      <button disabled class="linkLeftMenu" onClick={() => setActiveModal("support")}><img src={navMenuIcons.support} alt="Icon"/>Ayuda & Soporte</button>
       <button id="logoutBtn" class="linkLeftMenu" onClick={handleLogout}><img src={navMenuIcons.logout} alt="Icon"/>Salir</button>
       <span className="special-span">Redes</span>
       <div className="socialMedia">

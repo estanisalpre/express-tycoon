@@ -19,6 +19,7 @@ const vehiclesRoutes = require("./routes/vehicles");
 const citiesRoutes = require("./routes/cities");
 const userRoute = require("./routes/user")
 const garageRoute = require("./routes/garages")
+const rankingRoute = require("./routes/ranking")
 
 // API Routes
 app.use("/players", playersRoutes);
@@ -27,6 +28,7 @@ app.use("/vehicles", vehiclesRoutes);
 app.use("/cities", citiesRoutes);
 app.use("/user", userRoute);
 app.use("/garages", garageRoute);
+app.use("/ranking", rankingRoute);
 
 // Test route
 app.get("/", (req, res) => {

@@ -1,0 +1,84 @@
+@use '../../utils/vars' as *;
+@use '../../utils/mixins' as *;
+  
+.vehicle-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    @include sizes();
+    @include displayFlex($flexDirection:row);
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    .vehicle-item {
+        border-radius: 10px;
+        @include sizes($height: 400px);
+        @include displayFlex($justifyContent: space-between);
+        max-width: 250px;
+        text-align: center;
+        box-shadow: $shadow;
+        overflow: hidden;
+        padding-bottom: 5px;
+        gap: 5px;
+    
+        img {
+          @include sizes($height: 35%);
+        }
+        h2 {
+          text-align: center;
+          @include sizes($height:50px);
+        }
+        p {
+            @include sizes(90%);
+            @include displayFlex();
+            align-items: flex-start;
+            text-align: left;
+            font-size: $sm;
+            padding: 3px;
+        }
+        .priceVeh,
+        .speedVeh,
+        .sizeVeh{
+            font-size: $md;
+            border-radius: 5px;
+            background-color: $lightFontColor;
+        }
+        select{
+            @include sizes(90%);
+            font-family: $jersey20Font;
+            background-color: transparent;
+            border: 0px;
+            margin: 3px;
+            background-color: $lightFontColor;
+            border-radius: 5px;
+            outline: none;
+        }
+        button {
+            padding: 5px;
+            @include displayFlex($flexDirection:row);
+            @include sizes(90%,40px);
+            gap: 5px;
+            background-image: $gold-BackgroundImage;
+            color: $darkFontColor;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: $jersey20Font;
+            font-size: $lg;
+        }
+        button:disabled {
+            background: #ccc;
+            color: $lightFontColor;
+            cursor: not-allowed;
+        }
+      }
+      
+      .error-text {
+        color: red;
+        margin-top: 10px;
+      }
+}

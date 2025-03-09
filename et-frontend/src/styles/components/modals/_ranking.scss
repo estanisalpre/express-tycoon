@@ -1,0 +1,33 @@
+@use '../../utils/vars' as *;
+@use '../../utils/mixins' as *;
+
+.modal-content {
+    overflow-y: auto;
+    max-height: 80vh;
+
+    table {
+        @include sizes(); 
+        border-collapse: collapse;
+
+        th, td {
+            border: 1px solid #ccc;
+            text-align: left;
+            padding: 8px;
+            line-height: 30px; 
+            height: 40px; 
+            vertical-align: middle; 
+        }
+
+        th {
+            font-weight: bold;
+            color: $darkFontColor;
+            font-size: $lg;
+            text-align: center;
+        }
+
+        tr {
+            border-bottom: 1px solid #ddd;
+            height: 40px; 
+        }
+    }
+}

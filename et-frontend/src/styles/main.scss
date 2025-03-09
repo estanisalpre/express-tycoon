@@ -12,6 +12,8 @@
 @use './pages/home';
 @use './pages/login';
 @use './pages/register';
+@use './components/modals/concessionaire';
+@use './components/modals/ranking';
 
 body {
     font-family: $jersey20Font;
