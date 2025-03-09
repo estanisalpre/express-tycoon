@@ -44,7 +44,7 @@ function RightWall({setActiveModal}) {
         <div className="playerStats">
         <span className="stats playerLevel">
             <img src={playerStatsIcon.level} alt="Icon" /> Nivel: {userData.level}
-            <button className="link" onClick={() => setActiveModal("levels")}>Ver Niveles</button>
+            <button disabled className="link" onClick={() => setActiveModal("levels")}>Ver Niveles</button>
         </span>
         <span className="stats playerCompany">
             <img src={playerStatsIcon.company} alt="Icon" /> Empresa: {userData.company_name}
@@ -65,7 +65,7 @@ function RightWall({setActiveModal}) {
             <img src={playerStatsIcon.successdeliveries} alt="Icon" /> Entregas realizadas: {userData.success_deliveries}
         </span>
         <span className="stats configBtn">
-            <button className="" onClick={() => setActiveModal("config")}><img src={navMenuIcons.config} alt="Icon" /> Configuración</button>
+            <button disabled className="" onClick={() => setActiveModal("config")}><img src={navMenuIcons.config} alt="Icon" /> Configuración</button>
         </span>
         <span className="stats editProfileBtn">
             <button className="" onClick={() => setActiveModal("edit-profile")}><img src={navMenuIcons.config} alt="Icon" /> Editar Perfil</button>

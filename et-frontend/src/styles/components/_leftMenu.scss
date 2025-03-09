@@ -34,6 +34,11 @@
     .linkLeftMenu:hover{
         background-color: $mediumPurple;
         color: $lightFontColor;
+    }
+    .linkLeftMenu:disabled{
+        background-color: #ccc;
+        cursor: not-allowed;
+        border-radius: 10px;
     }   
     .socialMedia{
         @include sizes(70%,$height: 50px);

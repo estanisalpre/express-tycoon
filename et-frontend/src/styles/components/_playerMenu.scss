@@ -46,6 +46,11 @@
                     @include sizes(40%,auto);
                 }
             }
+            .link:disabled{
+                background-color: #ccc;
+                cursor: not-allowed;
+                border-radius: 10px;
+            }
         }
         li:hover{
             transform: scale(1.1);

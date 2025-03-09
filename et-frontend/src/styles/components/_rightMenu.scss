@@ -105,5 +105,10 @@
             font-family: $jersey20Font;
             cursor: pointer;
         }
+        .link:disabled{
+            background-color: #ccc;
+            cursor: not-allowed;
+            border-radius: 10px;
+        }
     }
 }

@@ -27,6 +27,26 @@ router.get("/:email", (req, res) => {
     );
 });
 
+router.get("/garages/:userId", (req, res) => {
+    const userId = req.params.userId;
+
+    const query = `
+        SELECT g.garage_id, g.garage_size, c.city_id, c.city_name
+        FROM garages g
+        JOIN cities c ON g.city_id = c.city_id
+        WHERE g.player_id = ?
+    `;
+
+    db.query(query, [userId], (err, results) => {
+        if (err) {
+            console.error("Error al obtener los garajes:", err);
+            return res.status(500).json({ error: "Error en el servidor" });
+        }
+
+        res.json(results);
+    });
+});
+
 module.exports = router;
 
 

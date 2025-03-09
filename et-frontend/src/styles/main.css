@@ -257,6 +257,11 @@ nav ul li {
   width: 40%;
   height: auto;
 }
+.playerMenu ul li .link:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  border-radius: 10px;
+}
 .playerMenu ul li:hover {
   transform: scale(1.1);
 }
@@ -306,6 +311,11 @@ nav ul li {
 #leftMenu .linkLeftMenu:hover {
   background-color: #5A56DB;
   color: #f1f1f1;
+}
+#leftMenu .linkLeftMenu:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  border-radius: 10px;
 }
 #leftMenu .socialMedia {
   width: 70%;
@@ -468,6 +478,11 @@ nav ul li {
   border: none;
   font-family: "Jersey 20", serif;
   cursor: pointer;
+}
+#rightMenu .playerStats .link:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  border-radius: 10px;
 }
 
 .playerTopStatsContainer {
@@ -1074,6 +1089,134 @@ nav ul li {
   font-size: 14px;
   display: block;
   margin-bottom: 5px;
+}
+
+.vehicle-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 10px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.vehicle-list .vehicle-item {
+  border-radius: 10px;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  max-width: 250px;
+  text-align: center;
+  box-shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);
+  overflow: hidden;
+  padding-bottom: 5px;
+  gap: 5px;
+}
+.vehicle-list .vehicle-item img {
+  width: 100%;
+  height: 35%;
+}
+.vehicle-list .vehicle-item h2 {
+  text-align: center;
+  width: 100%;
+  height: 50px;
+}
+.vehicle-list .vehicle-item p {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-start;
+  text-align: left;
+  font-size: 14px;
+  padding: 3px;
+}
+.vehicle-list .vehicle-item .priceVeh,
+.vehicle-list .vehicle-item .speedVeh,
+.vehicle-list .vehicle-item .sizeVeh {
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+}
+.vehicle-list .vehicle-item select {
+  width: 90%;
+  height: 100%;
+  font-family: "Jersey 20", serif;
+  background-color: transparent;
+  border: 0px;
+  margin: 3px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  outline: none;
+}
+.vehicle-list .vehicle-item button {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  width: 90%;
+  height: 40px;
+  gap: 5px;
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  color: #2c2c2c;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Jersey 20", serif;
+  font-size: 22px;
+}
+.vehicle-list .vehicle-item button:disabled {
+  background: #ccc;
+  color: #f1f1f1;
+  cursor: not-allowed;
+}
+.vehicle-list .error-text {
+  color: red;
+  margin-top: 10px;
+}
+
+.modal-content {
+  max-height: 80vh;
+  overflow-y: scroll;
+}
+.modal-content table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  overflow-y: scroll;
+  border: 1px solid black;
+}
+.modal-content table th, .modal-content table td {
+  border: 1px solid #ccc;
+  text-align: left;
+  padding: 8px;
+  line-height: 30px;
+  height: 40px;
+  vertical-align: middle;
+}
+.modal-content table th {
+  font-weight: bold;
+  color: #2c2c2c;
+  font-size: 22px;
+  text-align: center;
+}
+.modal-content table tr {
+  border-bottom: 1px solid #ddd;
+  height: 40px;
 }
 
 body {
