@@ -2,12 +2,15 @@
 @use '../../utils/mixins' as *;
 
 .modal-content {
-    overflow-y: auto;
+    //overflow-y: auto;
     max-height: 80vh;
+    overflow-y: scroll;
 
     table {
         @include sizes(); 
         border-collapse: collapse;
+        overflow-y: scroll;
+        border: 1px solid black;
 
         th, td {
             border: 1px solid #ccc;
