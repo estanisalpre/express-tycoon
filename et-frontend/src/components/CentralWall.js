@@ -18,7 +18,7 @@ import EmployeesModal from './modals/EmployeesModal'
 import GaragesModal from './modals/GaragesModal'
 import GasStationModal from './modals/GasStationModal'
 import MaintenanceModal from './modals/MaintenanceModal'
-import MapModal from './modals/MapModal'
+import TripsModal from './modals/TripsModal'
 import RealStateModal from './modals/RealStateModal'
 import RoutesModal from './modals/RoutesModal'
 import VehiclesModal from './modals/VehiclesModal'
@@ -45,7 +45,7 @@ function CentralWall({ activeModal, setActiveModal }) {
         {activeModal === "garages" && <GaragesModal onClose={() => setActiveModal("start")} />}
         {activeModal === "gas-station" && <GasStationModal onClose={() => setActiveModal("start")} />}
         {activeModal === "maintenance" && <MaintenanceModal onClose={() => setActiveModal("start")} />}
-        {activeModal === "map" && <MapModal onClose={() => setActiveModal("start")} />}
+        {activeModal === "trips" && <TripsModal onClose={() => setActiveModal("start")} />}
         {activeModal === "realState" && <RealStateModal onClose={() => setActiveModal("start")} />}
         {activeModal === "routes" && <RoutesModal onClose={() => setActiveModal("start")} />}
         {activeModal === "vehicles" && <VehiclesModal onClose={() => setActiveModal("start")} />}

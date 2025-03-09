@@ -4,7 +4,7 @@ const cors = require("cors");
 
 const corsOptions = {
     origin: 'http://localhost:3000', // Frontend port
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "DELETE"],
     allowedHeaders: ["Content-Type"]
 };
   
@@ -20,6 +20,7 @@ const citiesRoutes = require("./routes/cities");
 const userRoute = require("./routes/user")
 const garageRoute = require("./routes/garages")
 const rankingRoute = require("./routes/ranking")
+const routesRoute = require("./routes/routes")
 //const companyRoute = require("./routes/companies")
 
 // API Routes
@@ -30,6 +31,7 @@ app.use("/cities", citiesRoutes);
 app.use("/user", userRoute);
 app.use("/garages", garageRoute);
 app.use("/ranking", rankingRoute);
+app.use("/routes", routesRoute);
 //app.use("/companies", companyRoute);
 
 // Test route

@@ -75,7 +75,6 @@ function Game() {
             const userId = localStorage.getItem("userId");
             const garageCost = 50000;
 
-            // Llamar al endpoint para comprar el garaje y crear la compañía
             const garageResponse = await fetch("http://localhost:5000/garages/buy", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -83,7 +82,7 @@ function Game() {
                     player_id: userId,
                     city_id: selectedCity,
                     cost: garageCost,
-                    company_name: companyName, // Enviamos el nombre de la compañía
+                    company_name: companyName,
                 }),
             });
 
@@ -94,7 +93,6 @@ function Game() {
                 return;
             }
 
-            // Si el garaje se compra con éxito, actualizamos el dinero
             setMoney(garageData.newMoney);
             setShowCompanyModal(false);
             setShowCityModal(false);

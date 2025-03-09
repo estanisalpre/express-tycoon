@@ -48,6 +48,7 @@ import MercedesFarmImage from '../assets/backgrounds/truck-farm.png'
 import HappyEmployeeImage from '../assets/employee/happy-employee.png'
 //UI
 import CloseIcon from '../assets/ui/close.png'
+import DeleteIcon from '../assets/ui/delete.png'
 //Vehicles
 /* import SprinterVeh from '../assets/vehicles/sprinter.png'
 import MasterVeh from '../assets/vehicles/master.png'
@@ -63,6 +64,7 @@ import KangooVeh from '../assets/vehicles/kangoo.jpg' */
 
 export const ui = {
     close: CloseIcon,
+    delete: DeleteIcon,
 }
 
 export const landing = {

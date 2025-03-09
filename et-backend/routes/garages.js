@@ -50,9 +50,8 @@ router.post("/buy", (req, res) => {
   });
 });
 
-// Función para actualizar el dinero y marcar como no nuevo
+// UPDATE MONEY
 function updatePlayerAndMoney(player_id, cost, res) {
-    // Actualizar el dinero del jugador
     const updateMoneyQuery = "UPDATE players SET money = money - ?, first_time = 0 WHERE user_id = ?";
     db.query(updateMoneyQuery, [cost, player_id], (err, result) => {
         if (err) {
@@ -60,7 +59,6 @@ function updatePlayerAndMoney(player_id, cost, res) {
             return res.status(500).json({ error: "Error al actualizar el dinero" });
         }
 
-        // Obtener el nuevo saldo
         const getNewMoneyQuery = "SELECT money FROM players WHERE user_id = ?";
         db.query(getNewMoneyQuery, [player_id], (err, results) => {
             if (err) {
