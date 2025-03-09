@@ -1,37 +1,41 @@
 const API_URL = "http://localhost:5000";
 
 export async function registerUser(userData) {
-    try {
-      const response = await fetch(`${API_URL}/register`, { 
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userData),
-      });
-  
-      if (!response.ok) {
-        throw new Error(`Error HTTP: ${response.status}`);
-      }
-  
-      return await response.json();
-    } catch (error) {
-      console.error("Error en el registro:", error);
-      throw error;
-    }
-  }
-
-export async function loginUser(userData) {
   try {
-    const response = await fetch(`${API_URL}/login`, {
+    const response = await fetch(`${API_URL}/players/register`, { // Cambiado a /players/register
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
     });
 
+    const data = await response.json();
+
     if (!response.ok) {
-      throw new Error(`Error HTTP: ${response.status}`);
+      throw new Error(data.message || "Usuario ya registrado. Comprueba email u otros datos.");
     }
 
-    return await response.json();
+    return { status: response.status, ...data };
+  } catch (error) {
+    console.error("Error en el registro:", error);
+    throw error;
+  }
+}
+
+export async function loginUser(userData) {
+  try {
+    const response = await fetch(`${API_URL}/players/login`, { // Cambiado a /players/login
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "Error en el login");
+    }
+
+    return data;
   } catch (error) {
     console.error("Error en el login:", error);
     throw error;
@@ -40,7 +44,7 @@ export async function loginUser(userData) {
 
 export async function getUserData(email) {
   try {
-      const response = await fetch(`${API_URL}/user/${email}`);
+      const response = await fetch(`${API_URL}/user/${email}`); // Esta ruta no ha cambiado
       if (!response.ok) {
           throw new Error(`Error HTTP: ${response.status}`);
       }
