@@ -2,7 +2,7 @@ const API_URL = "http://localhost:5000";
 
 export async function registerUser(userData) {
   try {
-    const response = await fetch(`${API_URL}/players/register`, { // Cambiado a /players/register
+    const response = await fetch(`${API_URL}/players/register`, { 
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
@@ -23,7 +23,7 @@ export async function registerUser(userData) {
 
 export async function loginUser(userData) {
   try {
-    const response = await fetch(`${API_URL}/players/login`, { // Cambiado a /players/login
+    const response = await fetch(`${API_URL}/players/login`, { 
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
@@ -44,7 +44,7 @@ export async function loginUser(userData) {
 
 export async function getUserData(email) {
   try {
-      const response = await fetch(`${API_URL}/user/${email}`); // Esta ruta no ha cambiado
+      const response = await fetch(`${API_URL}/user/${email}`);
       if (!response.ok) {
           throw new Error(`Error HTTP: ${response.status}`);
       }
