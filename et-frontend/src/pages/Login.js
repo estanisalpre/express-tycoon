@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../services/authService";
-import { employeesImages } from '../utils/Images'
+import { employeesImages } from '../utils/Images';
 import { Link } from "react-router-dom";
 
 function Login() {
@@ -10,6 +10,7 @@ function Login() {
     user_password: "",
   });
 
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -17,16 +18,19 @@ function Login() {
       ...formData,
       [e.target.name]: e.target.value,
     });
+    setError(""); 
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(""); 
+
     try {
-      const response = await loginUser(formData); 
+      const response = await loginUser(formData);
 
       if (response.user_id) {
-        alert("Login exitoso!!");
-
+        console.log("Login exitoso")
+        
         localStorage.setItem("userEmail", response.user_email);
         localStorage.setItem("userName", response.user_name);
         localStorage.setItem("userId", response.user_id);
@@ -34,21 +38,23 @@ function Login() {
 
         navigate("/game");
       } else {
-        alert("Error en el login: " + response.error);
+        setError("Error en el login: " + response.error);
       }
     } catch (error) {
       console.error("Error en el login:", error);
+      setError(error.message || "Ocurrió un error inesperado. Inténtalo de nuevo.");
     }
   };
 
   return (
     <section className="loginContainer">
       <section className="leftLoginContainer">
-        <img src={employeesImages.happyEmployee} alt=""/>
+        <img src={employeesImages.happyEmployee} alt="" />
       </section>
       <section className="rightLoginContainer">
         <h1>Iniciar sesión</h1>
         <form onSubmit={handleSubmit}>
+          {error && <span className="errorText">{error}</span>}
           <input
             type="email"
             name="user_email"

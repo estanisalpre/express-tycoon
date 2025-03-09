@@ -39,7 +39,7 @@
                 margin-bottom: 10px;
                 font-family: $nunitoFont;
                 font-size: $lg;
-                color: $lightFontColor;
+                color: $darkFontColor;
             }
             #loginBtn{
                 @include sizes(60%,50px);
@@ -69,5 +69,13 @@
             }
 
         }
+    }
+    .errorText {
+        background-color: rgb(246, 99, 99);
+        border-radius: 5px;
+        padding: 5px;
+        font-size: 14px;
+        display: block;
+        margin-bottom: 5px;
     }
 }
