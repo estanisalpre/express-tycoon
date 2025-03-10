@@ -53,7 +53,7 @@ function RightWall({setActiveModal}) {
             <img src={playerStatsIcon.garages} alt="Icon" /> Garajes: {userData.garages}
         </span>
         <span className="stats playerVehicles">
-            <img src={playerStatsIcon.vehicles} alt="Icon" /> Vehículos: {userData.vehicles}
+            <img src={playerStatsIcon.vehicles} alt="Icon" /> Vehículos: {userData.trucks_inventory}
         </span>
         <span className="stats playerRoutes">
             <img src={playerStatsIcon.routes} alt="Icon" /> Rutas: {userData.routes}
