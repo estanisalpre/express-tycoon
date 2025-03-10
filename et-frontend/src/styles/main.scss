@@ -15,6 +15,7 @@
 @use './components/modals/concessionaire';
 @use './components/modals/ranking';
 @use './components/modals/routes';
+@use './components/modals/trips';
 
 body {
     font-family: $jersey20Font;
