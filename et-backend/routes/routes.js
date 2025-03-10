@@ -63,6 +63,62 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/:user_id", (req, res) => {
+    const { user_id } = req.params; // Obtener el user_id de los parámetros de la URL
+
+    if (!user_id) {
+        return res.status(400).json({ error: "Falta el user_id" });
+    }
+
+    // Definir el precio estimado por kilómetro
+    const precioPorKm = 5; // $5 por km
+
+    const query = `
+        SELECT r.route_id, r.user_id, r.origin_city, r.destination_city, r.garage_id,
+               o.city_name AS origin_city_name, o.latitude AS origin_lat, o.longitude AS origin_lon,
+               d.city_name AS destination_city_name, d.latitude AS destination_lat, d.longitude AS destination_lon,
+               r.km_distance, r.estimated_time
+        FROM routes r
+        JOIN cities o ON r.origin_city = o.city_id
+        JOIN cities d ON r.destination_city = d.city_id
+        WHERE r.user_id = ?;
+    `;
+
+    db.query(query, [user_id], (err, routes) => {
+        if (err) {
+            console.error("Error al obtener rutas:", err);
+            return res.status(500).json({ success: false, message: "Error en el servidor" });
+        }
+
+        if (routes.length === 0) {
+            return res.status(404).json({ success: false, message: "No se encontraron rutas para este usuario" });
+        }
+
+        // Calcular distancia, tiempo estimado y precio
+        const velocidadPromedio = 80; // km/h
+        routes.forEach(route => {
+            if (!route.km_distance || !route.estimated_time) {
+                const distancia = calcularDistancia(
+                    route.origin_lat, route.origin_lon,
+                    route.destination_lat, route.destination_lon
+                );
+
+                const tiempoEstimado = distancia / velocidadPromedio; // en horas
+
+                route.km_distance = distancia.toFixed(2);
+                route.estimated_time = tiempoEstimado.toFixed(2);
+            }
+
+            // Calcular precio estimado
+            const precioEstimado = (route.km_distance * precioPorKm).toFixed(2);
+            route.price = precioEstimado;
+        });
+
+        res.json({ success: true, routes });
+    });
+});
+
+
 // Crear nueva ruta con cálculos
 router.post("/create", (req, res) => {
     const { user_id, origin_city, destination_city, garage_id } = req.body;

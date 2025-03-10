@@ -111,4 +111,44 @@ router.post("/players/set-sede", (req, res) => {
     });
 });
 
+router.post("/update-balance", async (req, res) => {
+  const { userId, amount } = req.body;
+
+  if (!userId || amount === undefined) {
+    return res.status(400).json({ success: false, message: "Datos inválidos." });
+  }
+
+  try {
+    // Asegurarse de que amount sea un número
+    const amountNumber = parseFloat(amount);
+    if (isNaN(amountNumber)) {
+      return res.status(400).json({ success: false, message: "La cantidad debe ser un número válido." });
+    }
+
+    // Obtener el dinero actual del jugador y asegurarse de que es un número
+    const [user] = await db.promise().query("SELECT money FROM players WHERE user_id = ?", [userId]);
+    
+    if (user.length === 0) {
+      return res.status(404).json({ success: false, message: "Usuario no encontrado." });
+    }
+
+    // Asegurarse de que el dinero actual del jugador es un número
+    const currentMoney = parseFloat(user[0].money);
+    if (isNaN(currentMoney)) {
+      return res.status(500).json({ success: false, message: "Error al obtener el saldo del usuario." });
+    }
+
+    // Realizar la suma
+    const newBalance = currentMoney + amountNumber;
+
+    // Actualizar el saldo
+    await db.promise().query("UPDATE players SET money = ? WHERE user_id = ?", [newBalance, userId]);
+
+    res.json({ success: true, newBalance });
+  } catch (error) {
+    console.error("Error al actualizar saldo:", error);
+    res.status(500).json({ success: false, message: "Error en el servidor." });
+  }
+});
+
 module.exports = router;
