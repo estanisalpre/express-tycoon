@@ -4,7 +4,7 @@ import { ui, playerMenu } from "../../utils/Images";
 function TripsModal({ onClose }) {
   const [routes, setRoutes] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [returnTrips, setReturnTrips] = useState([]);
+  // Eliminamos returnTrips porque utilizaremos directamente route.is_return
   // Estado global para el tiempo actual
   const [currentTime, setCurrentTime] = useState(Date.now());
 
@@ -12,7 +12,6 @@ function TripsModal({ onClose }) {
   useEffect(() => {
     const fetchRouteData = async () => {
       const userId = localStorage.getItem("userId");
-
       if (!userId) {
         console.error("No se encontró el userId en localStorage.");
         setLoading(false);
@@ -22,11 +21,8 @@ function TripsModal({ onClose }) {
       try {
         const response = await fetch(`http://localhost:5000/routes/${userId}`);
         const data = await response.json();
-
         if (data?.success && data.routes?.length > 0) {
           setRoutes(data.routes);
-          // Inicializamos "returnTrips" en "ida" (false)
-          setReturnTrips(Array(data.routes.length).fill(false));
         } else {
           setRoutes([]);
         }
@@ -53,7 +49,6 @@ function TripsModal({ onClose }) {
   const updateUserBalance = async (amount) => {
     const userId = localStorage.getItem("userId");
     if (!userId) return;
-
     try {
       const response = await fetch(`http://localhost:5000/players/update-balance`, {
         method: "POST",
@@ -61,7 +56,6 @@ function TripsModal({ onClose }) {
         body: JSON.stringify({ userId, amount }),
       });
       const data = await response.json();
-
       if (data.success) {
         console.log("Saldo actualizado correctamente:", data.newBalance);
       } else {
@@ -102,10 +96,11 @@ function TripsModal({ onClose }) {
     try {
       const routeId = routes[index].route_id;
       const newStartTime = new Date().toISOString();
+      // Aquí se envía isReturn al backend para actualizar el campo is_return
       const response = await fetch(`http://localhost:5000/routes/start`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ routeId, start_time: newStartTime }),
+        body: JSON.stringify({ routeId, start_time: newStartTime, isReturn }),
       });
       const data = await response.json();
       if (!data.success) {
@@ -113,18 +108,14 @@ function TripsModal({ onClose }) {
         return;
       }
 
-      // Actualizamos el estado de la ruta a "activo" y asignamos el nuevo start_time
+      // Actualizamos localmente el objeto de la ruta:
+      // Si isReturn es true, actualizamos is_return a 1 y cambiamos el status a "activo" con nuevo start_time.
       const newRoutes = routes.map((route, i) =>
-        i === index ? { ...route, status: "activo", start_time: newStartTime } : route
+        i === index
+          ? { ...route, status: "activo", start_time: newStartTime, is_return: isReturn ? 1 : 0 }
+          : route
       );
       setRoutes(newRoutes);
-
-      // Si es el viaje de vuelta, actualizamos el estado indicando que ya se dio la vuelta.
-      if (isReturn) {
-        const newReturnTrips = [...returnTrips];
-        newReturnTrips[index] = true;
-        setReturnTrips(newReturnTrips);
-      }
     } catch (error) {
       console.error("Error en iniciarRuta:", error);
     }
@@ -185,10 +176,7 @@ function TripsModal({ onClose }) {
         <div className="routes-container">
           {routes.map((route, index) => (
             <div key={index} className="route-container">
-              <div
-                className="route-line"
-                style={{ position: "relative", width: "40%" }}
-              >
+              <div className="route-line" style={{ position: "relative", width: "30%" }}>
                 <div
                   className="vehicle"
                   style={{
@@ -212,11 +200,11 @@ function TripsModal({ onClose }) {
                   )}
                 </div>
               </div>
-              {/* Si returnTrips está en true, se muestra el trayecto invertido */}
+              {/* La visualización del trayecto depende de route.is_return */}
               <p>
-                { route.is_return 
-                  ? `${route.destination_city_name} → ${route.origin_city_name}` 
-                  : `${route.origin_city_name} → ${route.destination_city_name}` 
+                { route.is_return
+                  ? `${route.destination_city_name} → ${route.origin_city_name}`
+                  : `${route.origin_city_name} → ${route.destination_city_name}`
                 }
               </p>
               <p>Precio Estimado: ${route.price}</p>
@@ -228,26 +216,24 @@ function TripsModal({ onClose }) {
               </p>
               {/* Botón según el estado de la ruta */}
               {route.status === "pendiente" && (
-                <button
-                  onClick={() => iniciarRuta(route.estimated_time, index, false)}
-                  disabled={false}
-                >
+                <button onClick={() => iniciarRuta(route.estimated_time, index, false)}>
                   Iniciar ($ {route.price})
                 </button>
               )}
               {route.status === "activo" && (
-                <button disabled>En curso ($ {route.price})</button>
+                <button disabled>
+                  En curso ($ {route.price})
+                </button>
               )}
-              {route.status === "completado" && !returnTrips[index] && (
-                <button
-                  onClick={() => iniciarRuta(route.estimated_time, index, true)}
-                  disabled={false}
-                >
+              {route.status === "completado" && Number(route.is_return) === 0 && (
+                <button onClick={() => iniciarRuta(route.estimated_time, index, true)}>
                   Iniciar Vuelta ($ {route.price})
                 </button>
               )}
-              {route.status === "completado" && returnTrips[index] && (
-                <button disabled>Completado ($ {route.price})</button>
+              {route.status === "completado" && Number(route.is_return) === 1 && (
+                <button onClick={() => iniciarRuta(route.estimated_time, index, false)}>
+                  Iniciar ($ {route.price})
+                </button>
               )}
             </div>
           ))}

@@ -148,7 +148,6 @@ function RoutesModal({ onClose }) {
             const data = await response.json();
 
             if (data.success) {
-                alert("Ruta creada con éxito");
                 closeCreateRouteModal();
                 const fetchResponse = await fetch(`http://localhost:5000/routes?user_id=${userId}`);
                 const fetchData = await fetchResponse.json();
@@ -204,6 +203,15 @@ function RoutesModal({ onClose }) {
       }
     };
 
+    const convertToHMS = (timeHours) => {
+        // Multiplicamos por 3600 para convertir horas a segundos
+        const totalSeconds = Math.round(timeHours * 3600);
+        const h = Math.floor(totalSeconds / 3600);
+        const m = Math.floor((totalSeconds % 3600) / 60);
+        const s = totalSeconds % 60;
+        return `${h}h ${m}m ${s}s`;
+    };
+
     return (
         <div className="modal">
             <div className="modal-content-routes">
@@ -240,7 +248,7 @@ function RoutesModal({ onClose }) {
                                       <option value="120">120 km/h (Express)</option>
                                   </select>
                                   <p>Distancia: {route.km_distance} km</p>→
-                                  <p>Tiempo estimado: {route.estimated_time} horas</p>
+                                  <p>Tiempo estimado: {convertToHMS(route.estimated_time)}</p>
                                   <img
                                       src={ui.delete}
                                       alt="Eliminar ruta"
