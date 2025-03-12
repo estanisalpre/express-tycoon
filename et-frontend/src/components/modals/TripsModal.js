@@ -1,12 +1,32 @@
 import React, { useState, useEffect } from "react";
+import { getUserData } from "../../services/authService";
 import { ui, playerMenu } from "../../utils/Images";
 
 function TripsModal({ onClose }) {
   const [routes, setRoutes] = useState([]);
+  const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
-  // Eliminamos returnTrips porque utilizaremos directamente route.is_return
-  // Estado global para el tiempo actual
   const [currentTime, setCurrentTime] = useState(Date.now());
+
+  useEffect(() => {
+    const userEmail = localStorage.getItem("userEmail");
+
+    if(!userEmail){
+      console.error("Email inexistente para buscar las entregas realizadas")
+      return;
+    }
+
+    getUserData(userEmail).then((data) => {
+      if (data.error) {
+        console.error("Error al obtener datos (entregas):", data.error);
+        return;
+      } 
+      setUserData(data);
+    
+      const count_deliveries = parseInt(data.deliveries_made); // Usar `data`, no `userData`
+      return count_deliveries;
+    });
+  }, [userData]);
 
   // Cargar rutas desde el backend
   useEffect(() => {
@@ -44,6 +64,29 @@ function TripsModal({ onClose }) {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+
+  // UPDATE DELIVERIES_MADE
+  const updateDeliveriesMade = async () => {
+    const userId = localStorage.getItem("userId");
+    if (!userId) return;
+  
+    try {
+      const response = await fetch("http://localhost:5000/players/update-deliveries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId }),
+      });
+  
+      const data = await response.json();
+      if (data.success) {
+        console.log("Entregas actualizadas correctamente.");
+      } else {
+        console.error("Error al actualizar entregas:", data.message);
+      }
+    } catch (error) {
+      console.error("Error en updateDeliveriesMade:", error);
+    }
+  };
 
   // Función para actualizar el balance del usuario
   const updateUserBalance = async (amount) => {
@@ -126,6 +169,7 @@ function TripsModal({ onClose }) {
     try {
       // Depositar el dinero (el precio es el mismo para ambos tramos)
       await updateUserBalance(routes[index].price);
+      await updateDeliveriesMade();
 
       // Actualizar la ruta a "completado" en el backend
       const response = await fetch(`http://localhost:5000/routes/complete`, {

@@ -18,16 +18,16 @@ function RightWall({setActiveModal}) {
         getUserData(userEmail)
         .then((data) => {
             if (data.error) {
-            console.error("Error al obtener datos:", data.error);
+                console.error("Error al obtener datos:", data.error);
+                navigate("/login");
+            } else {
+                setUserData(data);
+            }
+        })
+        .catch((error) => {
+            console.error("Error en la solicitud:", error);
             navigate("/login");
-        } else {
-            setUserData(data);
-        }
-    })
-    .catch((error) => {
-        console.error("Error en la solicitud:", error);
-        navigate("/login");
-    });
+        });
     }, [navigate]);
   
     if (!userData) {
@@ -62,7 +62,7 @@ function RightWall({setActiveModal}) {
             <img src={playerStatsIcon.employees} alt="Icon" /> Empleados: {userData.employees}
         </span>
         <span className="stats playerSuccessDeliveries">
-            <img src={playerStatsIcon.successdeliveries} alt="Icon" /> Entregas realizadas: {userData.success_deliveries}
+            <img src={playerStatsIcon.successdeliveries} alt="Icon" /> Entregas realizadas: {userData.deliveries_made}
         </span>
         <span className="stats configBtn">
             <button disabled className="" onClick={() => setActiveModal("config")}><img src={navMenuIcons.config} alt="Icon" /> Configuración</button>
