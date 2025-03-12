@@ -12,7 +12,7 @@ router.get("/:email", (req, res) => {
     db.query(
         `SELECT 
             p.user_id, p.user_name, p.user_email, p.money, p.level, p.experience, p.first_time,
-            c.company_name,
+            c.company_name, p.deliveries_made,
             (SELECT COUNT(*) FROM garages WHERE player_id = p.user_id) AS garages,
             (SELECT COUNT(*) FROM routes WHERE user_id = p.user_id) AS routes,
             (SELECT COUNT(*) FROM trucks_inventory WHERE user_id = p.user_id) AS trucks_inventory

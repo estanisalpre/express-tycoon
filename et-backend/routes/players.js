@@ -83,6 +83,7 @@ router.post("/login", (req, res) => {
           money: user.money,
           level: user.level,
           experience: user.experience,
+          deliveries: user.deliveries_made,
         });
       } else {
         return res.json({
@@ -93,6 +94,7 @@ router.post("/login", (req, res) => {
           money: user.money,
           level: user.level,
           experience: user.experience,
+          deliveries: user.deliveries_made,
         });
       }
     });
@@ -109,6 +111,32 @@ router.post("/players/set-sede", (req, res) => {
       }
       res.json({ success: true, message: "Ciudad de inicio guardada correctamente." });
     });
+});
+
+router.post("/update-deliveries", (req, res) => {
+  const { userId } = req.body;
+
+  if (!userId) {
+    return res.status(400).json({ error: "Falta userId" });
+  }
+
+  const getDeliveriesQuery = "SELECT deliveries_made FROM players WHERE user_id = ?";
+  db.query(getDeliveriesQuery, [userId], (err, results) => {
+    if (err || results.length === 0) {
+      return res.status(500).json({ error: "Error al obtener las entregas realizadas" });
+    }
+
+    const currentDeliveries = parseInt(results[0].deliveries_made) || 0;
+    const newDeliveries = currentDeliveries + 1;
+
+    const updateDeliveriesQuery = "UPDATE players SET deliveries_made = ? WHERE user_id = ?";
+    db.query(updateDeliveriesQuery, [newDeliveries, userId], (err, results) => {
+      if (err) {
+        return res.status(500).json({ error: "Error al actualizar las entregas" });
+      }
+      res.json({ success: true, message: "Entregas actualizadas correctamente", newDeliveries });
+    });
+  });
 });
 
 router.post("/update-balance", async (req, res) => {
