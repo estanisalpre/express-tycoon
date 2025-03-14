@@ -52,6 +52,7 @@ router.get("/", (req, res) => {
 
     // Calcular distancia y tiempo estimado si no están en la BD
     const velocidadPromedio = 80; // km/h
+
     routes.forEach((route) => {
       if (!route.km_distance || !route.estimated_time) {
         const distancia = calcularDistancia(
@@ -81,7 +82,8 @@ router.get("/:user_id", (req, res) => {
   }
 
   const precioPorKm = 5; // $5 por km
-
+  const experienciaPorKm = 10;  // $10/km
+  
   const query = `
     SELECT r.route_id, r.user_id, r.origin_city, r.destination_city, r.garage_id,
            o.city_name AS origin_city_name, o.latitude AS origin_lat, o.longitude AS origin_lon,
@@ -128,6 +130,9 @@ router.get("/:user_id", (req, res) => {
       // Calcular precio estimado
       const precioEstimado = (route.km_distance * precioPorKm).toFixed(2);
       route.price = precioEstimado;
+      // **Calcular experiencia basada en km**
+      const experienciaEstimado = (route.km_distance * experienciaPorKm).toFixed(0); // Redondear
+      route.experience = experienciaEstimado;
     });
 
     res.json({ success: true, routes });

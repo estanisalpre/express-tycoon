@@ -170,13 +170,38 @@ function TripsModal({ onClose }) {
       // Depositar el dinero (el precio es el mismo para ambos tramos)
       await updateUserBalance(routes[index].price);
       await updateDeliveriesMade();
-
+  
+      // **Actualizar experiencia basada en la ruta**
+      const experienceGained = parseInt(routes[index].experience); // Obtenemos la experiencia del backend
+      const userId = localStorage.getItem("userId"); // Obtenemos el userId
+  
+      if (!userId) {
+        console.error("ID de usuario no disponible.");
+        return;
+      }
+  
+      // Llamamos al nuevo endpoint para actualizar la experiencia
+      const responseExperience = await fetch("http://localhost:5000/players/update-experience", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, userExp: experienceGained }),
+      });
+  
+      const dataExperience = await responseExperience.json();
+      if (!dataExperience.success) {
+        console.error("Error al actualizar experiencia:", dataExperience.message);
+        return;
+      }
+  
+      console.log("Experiencia actualizada correctamente.");
+  
       // Actualizar la ruta a "completado" en el backend
       const response = await fetch(`http://localhost:5000/routes/complete`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ routeId }),
       });
+  
       const data = await response.json();
       if (data.success) {
         // Actualizamos localmente el status a "completado"
@@ -191,7 +216,7 @@ function TripsModal({ onClose }) {
       console.error("Error en completeRoute:", error);
     }
   };
-
+  
   // Revisa de forma continua si alguna ruta activa se completó
   useEffect(() => {
     routes.forEach((route, index) => {

@@ -179,4 +179,40 @@ router.post("/update-balance", async (req, res) => {
   }
 });
 
+// Endpoint para actualizar experiencia del jugador
+router.post("/update-experience", (req, res) => {
+  const { userId, userExp } = req.body;
+
+  if (!userId || !userExp) {
+    return res.status(400).json({
+      success: false,
+      message: "Faltan parámetros: userId o userExp.",
+    });
+  }
+
+  const query = `UPDATE players SET experience = experience + ? WHERE user_id = ?`;
+
+  db.query(query, [userExp, userId], (err, result) => {
+    if (err) {
+      console.error("Error al actualizar experiencia:", err);
+      return res.status(500).json({
+        success: false,
+        message: "Error al actualizar experiencia en la base de datos.",
+      });
+    }
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "Usuario no encontrado.",
+      });
+    }
+
+    res.json({
+      success: true,
+      message: "Experiencia actualizada correctamente.",
+    });
+  });
+});
+
 module.exports = router;
