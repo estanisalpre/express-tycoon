@@ -23,6 +23,7 @@ import GaragesIcon from '../assets/icons/garage-1.png'
 import VehiclesIcon from '../assets/icons/truck.png'
 import RoutesIcon from '../assets/icons/routes.png'
 import EmployeesIcon from '../assets/icons/employee.png'
+import HeadquartersIcon from '../assets/icons/headquarters.png'
 import SuccessDeliveriesIcon from '../assets/icons/checklist.png'
 import MapIcon from '../assets/icons/map.png'
 import GarageIcon from '../assets/icons/garage-2.png'
@@ -102,6 +103,7 @@ export const playerStatsIcon = {
     routes: RoutesIcon,
     employees: EmployeesIcon,
     successdeliveries: SuccessDeliveriesIcon,
+    headquarter: HeadquartersIcon,
 }
 
 export const globalImages = {

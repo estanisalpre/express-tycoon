@@ -420,11 +420,16 @@ nav ul li {
   color: #2c2c2c;
   box-shadow: 0px 10px 5px 1px rgba(0, 0, 0, 0.097);
 }
+#rightMenu .playerStats .stats img {
+  width: 40px;
+  height: auto;
+}
 #rightMenu .playerStats .stats:hover {
   background-color: #5A56DB;
   color: #f1f1f1;
 }
 #rightMenu .playerStats .playerCompany,
+#rightMenu .playerStats .playerCity,
 #rightMenu .playerStats .playerLevel,
 #rightMenu .playerStats .playerSuccessDeliveries {
   grid-column: span 2;

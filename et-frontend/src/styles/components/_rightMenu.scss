@@ -48,12 +48,17 @@
             color: $darkFontColor;
             box-shadow: 0px 10px 5px 1px rgba(0, 0, 0, 0.097);
             
+            img{
+                @include sizes(40px,auto);
+            }
+
             &:hover {
                 background-color: $mediumPurple;
                 color: $lightFontColor;
             }
         }
         .playerCompany,
+        .playerCity,
         .playerLevel,
         .playerSuccessDeliveries{
             grid-column: span 2;
