@@ -5,6 +5,7 @@ import { navMenuIcons, globalImages, playerStatsIcon } from '../utils/Images';
 
 function RightWall({setActiveModal}) {
     const [userData, setUserData] = useState(null);
+    const [weather, setWeather] = useState(null);
     const navigate = useNavigate(); 
 
     useEffect(() => {
@@ -29,7 +30,24 @@ function RightWall({setActiveModal}) {
             navigate("/login");
         });
     }, [navigate]);
-  
+    
+    useEffect(() => {
+        if (!userData || !userData.city_name) return; // Evita ejecutar si userData no está definido
+
+        async function fetchWeather() {
+            try {
+                let response = await fetch(`http://localhost:5000/cities/weather/${userData.city_name}`);
+                let data = await response.json();
+                setWeather(`${data.city} - 🌡️${data.temperature}°C`);
+            } catch (error) {
+                console.error('Error obteniendo el clima:', error);
+                setWeather('❌ Error obteniendo el clima');
+            }
+        }
+
+        fetchWeather();
+    }, [userData?.city_name]); // Usa opcional chaining para evitar errores
+
     if (!userData) {
       return <div>Cargando...</div>;
     }
@@ -48,6 +66,10 @@ function RightWall({setActiveModal}) {
         </span>
         <span className="stats playerCompany">
             <img src={playerStatsIcon.company} alt="Icon" /> Empresa: {userData.company_name}
+        </span>
+        <span className="stats playerCity">
+            <img src={playerStatsIcon.headquarter} alt="Icon" />
+            <span className='cityWeather'>Sede: {weather}</span>
         </span>
         <span className="stats playerGarages">
             <img src={playerStatsIcon.garages} alt="Icon" /> Garajes: {userData.garages}
