@@ -1,0 +1,10 @@
+@use '../utils/vars' as *;       
+@use '../utils/mixins' as *;  
+
+html{
+    width: 100%;
+    min-height: 100vh;
+    scrollbar-width: none;
+    /* overflow-y: hidden;
+    overflow-x: hidden; */
+}

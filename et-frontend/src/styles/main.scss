@@ -3,12 +3,31 @@
 @use './base/reset';       
 @use './base/typography';  
 @use './base/base';  
-@use './components/navbar';      
+@use './components/navbar';  
+@use './pages/game';  
+@use './components/playerMenu';
+@use './components/leftMenu';
+@use './components/rightMenu';
+@use './components/playerTopStats';
+@use './pages/home';
+@use './pages/login';
+@use './pages/register';
+@use './components/modals/concessionaire';
+@use './components/modals/ranking';
+@use './components/modals/routes';
+@use './components/modals/trips';
 
-// Estilos generales
 body {
-    font-family: $afacadFont;
-    background: $backgroundImage;
+    font-family: $jersey20Font;
+    background: $standar-Dark-BackgroundImage;
     background-size: cover;
-    background-attachment: fixed;
+    background-attachment: fixed; 
+    color: $lightFontColor;
+    display: flex;
+    flex-direction: column;
+    //align-items: center;
+    //justify-content: space-between;
+    min-height: 100%;
+    width: 100%;
 }
+

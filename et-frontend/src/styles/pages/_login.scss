@@ -1,0 +1,81 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+@use '../utils/animations' as *;
+
+.loginContainer{
+    @include sizes($height: 100vh);
+    @include displayFlex($flexDirection:row);
+
+    section{
+        @include sizes();
+        @include displayFlex();
+    }
+    .leftLoginContainer{
+        img{
+            @include sizes(70%,auto);
+            border-radius: 10px;
+        }
+    }
+    .rightLoginContainer{
+        h1{
+            font-family: $afacadFont;
+            font-weight: $superBold;
+            font-size: $extraLg;
+            color: $lightFontColor;
+            @include sizes(80%,50px);
+            @include displayFlex();
+        }
+        form{
+            @include displayFlex();
+            @include sizes(100%,250px);
+
+            input{
+                @include sizes(60%,50px);
+                @include displayFlex();
+                border: 0px;
+                outline: none;
+                border-radius: 10px;
+                padding: 10px;
+                margin-bottom: 10px;
+                font-family: $nunitoFont;
+                font-size: $lg;
+                color: $darkFontColor;
+            }
+            #loginBtn{
+                @include sizes(60%,50px);
+                @include displayFlex();
+                border: 0px;
+                outline: none;
+                border-radius: 10px;
+                padding: 10px;
+                margin-bottom: 10px;
+                font-family: $nunitoFont;
+                font-size: $lg;
+                color: $lightFontColor;
+                background: $lightPurple;
+                cursor: pointer;
+            }
+        }
+        p{
+            @include sizes(60%,20px);
+            font-family: $nunitoFont;
+            font-size: $md;
+
+            .linkLoginReg{
+                text-decoration: none;
+                color: $lightPurple;
+                font-weight: $superBold;
+                cursor: pointer;
+            }
+
+        }
+    }
+    .errorText {
+        background-color: rgb(246, 99, 99);
+        border-radius: 5px;
+        padding: 5px;
+        font-size: 14px;
+        display: block;
+        margin-bottom: 5px;
+    }
+}

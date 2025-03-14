@@ -1,0 +1,49 @@
+@use '../../utils/vars' as *;
+@use '../../utils/mixins' as *;
+
+.routes-container{
+    @include sizes();
+    @include displayFlex();
+    justify-content: flex-start;
+    padding: 10px;
+    gap: 5px;
+
+    .route-container{
+        @include sizes($height: 60px);
+        @include displayFlex($flexDirection:row, $justifyContent: space-between);
+        align-items: flex-end;
+        gap: 5px;
+        background-image: $gold-BackgroundImage;
+        border-radius: 5px;
+        padding: 10px;
+
+        .route-line{
+            
+            @include displayFlex();
+            border-bottom: 1px dashed black;
+
+            .vehicle{
+
+                img{
+                    position: absolute;
+                    right: -20px;
+                }
+            }
+        }
+        button{
+            border: none;
+            background-color: #c9ffb3;
+            padding: 5px;
+            border-radius: 5px;
+            @include sizes(180px,70%);
+            //box-shadow: $shadow;
+            @include displayFlex();
+            font-family: $jersey20Font;
+            font-size: $md;
+            cursor: pointer;
+        }
+        button:disabled{
+            cursor: not-allowed;
+        }
+    }
+}

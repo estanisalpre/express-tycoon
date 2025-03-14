@@ -1,0 +1,127 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+#fatherContainer{
+    @include sizes(100vw, 100vh);
+    @include displayFlex($flexDirection:row, $justifyContent: space-between);
+    color: $darkFontColor;
+    position: relative;
+    
+    .modal{
+        @include sizes(65%,83vh);
+        background-image: $standar-Normal-BackgroundImage;
+        border-radius: 10px;
+        overflow: hidden;
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        transform: translate(-50%);
+
+        h2{
+            background-color: $mediumPurple;
+            @include sizes($height:40px);
+            @include displayFlex($flexDirection:row, $justifyContent: space-between);
+            padding-left: 10px;
+            padding-right: 10px;
+            color: $lightFontColor;
+
+            button{
+                border: none;
+                outline: none;
+                background-color: transparent;
+                cursor: pointer;
+                @include sizes(auto,100%);
+                @include displayFlex();
+            }
+        }
+        
+        .modal-content{
+            @include sizes();
+            padding-bottom: 10px;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            overflow-x: hidden;  
+        }
+    }
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        @include sizes();
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000000;
+      }
+      
+      .modal-content {
+        background-image: $standar-Normal-BackgroundImage;
+        padding: 10px;
+        border-radius: 10px;
+        @include sizes(450px,250px);
+        @include displayFlex($justifyContent: space-between);
+        text-align: center;
+
+        input{
+            border: none;
+            background-color: $lightFontColor;
+            color: $darkFontColor;
+            font-family: $jersey20Font;
+            padding: 10px;
+            border-radius: 5px;
+            @include sizes(90%,40px);
+            outline: none;
+        }
+      }
+      
+      .city-list {
+        margin: 20px 0;
+        max-height: 200px; 
+        overflow-y: auto; 
+        background-color: $lightFontColor;
+        border-radius: 10px;
+        padding: 10px;
+        @include sizes(90%);
+        scrollbar-width: none;
+      }
+      
+      .city-item {
+        padding: 10px;
+        border-radius: 5px;
+        margin: 5px 0;
+        cursor: pointer;
+        border: 1px solid rgba(128, 128, 128, 0.415);
+      }
+      
+      .city-item.selected {
+        background: #007bff;
+        color: white;
+      }
+      
+      .error-text {
+        background-color: rgb(255, 110, 110);
+        color: $lightFontColor;
+        margin-bottom: 10px;
+      }
+      
+      .initialBtns {
+        padding: 5px 10px;
+        background-image: $deg-Medium-BlueToPurple;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        @include sizes(90%, 40px);
+        @include displayFlex($flexDirection:row);
+        font-family: $jersey20Font;
+        font-size: 18px;
+        gap: 5px;
+      }
+      
+      .initialBtns:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+}

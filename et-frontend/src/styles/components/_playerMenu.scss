@@ -1,0 +1,62 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+.playerMenu{
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include sizes(60%,80px);
+    @include displayFlex($flexDirection:row, $justifyContent: space-between);
+    border-radius: 5px;
+    padding: 5px;
+
+    ul{
+        @include sizes();
+        @include displayFlex($flexDirection:row, $justifyContent: space-between);
+        gap: 10px;
+
+        li{
+            list-style: none;
+            color: $lightFontColor;
+            border-radius: 10px;
+            @include sizes();
+            @include displayFlex();
+            background-color: $mediumPurple;
+            cursor: pointer;
+
+            .link{
+                @include sizes();
+                @include displayFlex();
+                text-decoration: none;
+                border: 0px;
+                background-color: transparent;
+                font-family: $jersey20Font;
+                cursor: pointer;
+
+                span{
+                    @include sizes(120%,$height: 25px);
+                    @include displayFlex();
+                    font-weight: $noBold;
+                    color: $lightFontColor;
+                    margin-top: -10px;
+                    text-shadow: 0px 1px black;
+                }
+                img{
+                    @include sizes(40%,auto);
+                }
+            }
+            .link:disabled{
+                background-color: #ccc;
+                cursor: not-allowed;
+                border-radius: 10px;
+            }
+        }
+        li:hover{
+            transform: scale(1.1);
+        }
+        .specialLi{
+            background-image: $gold-BackgroundImage;
+        }
+    }
+}
