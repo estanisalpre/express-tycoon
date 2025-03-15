@@ -1,0 +1,40 @@
+@use '../../utils/vars' as *;
+@use '../../utils/mixins' as *;
+
+.vehiclesContainer{
+  @include sizes();
+  @include displayFlex();
+
+  ul{
+    @include sizes();
+    @include displayFlex();
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    padding: 10px;
+
+    li{
+      list-style: none;
+      @include sizes(200px,300px);
+      box-shadow: $shadow;
+      border-radius: 10px;
+      padding: 10px;
+    }
+  }
+}
+
+// ERROR
+.errorSpan{
+  background-color: rgb(255, 125, 125);
+  font-size: $md;
+  font-weight: bold;
+  text-align: center;
+  @include sizes(50%, 30px);
+  border-radius: 5px;
+  padding: 5px;
+  color: $darkFontColor;
+}
