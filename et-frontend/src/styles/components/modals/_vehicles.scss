@@ -7,7 +7,7 @@
 
   ul{
     @include sizes();
-    @include displayFlex();
+    @include displayFlex($flexDirection:row);
     justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
@@ -22,7 +22,11 @@
       @include sizes(200px,300px);
       box-shadow: $shadow;
       border-radius: 10px;
-      padding: 10px;
+
+      img{
+        @include sizes(100%, 120px);
+        border-radius: 10px;
+      }
     }
   }
 }
