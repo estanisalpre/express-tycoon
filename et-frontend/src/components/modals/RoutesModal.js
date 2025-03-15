@@ -41,7 +41,7 @@ function RoutesModal({ onClose }) {
         };
     
         fetchGarages();
-      }, []);
+    }, []);
 
     useEffect(() => {
         const fetchRoutes = async () => {
@@ -204,7 +204,6 @@ function RoutesModal({ onClose }) {
     };
 
     const convertToHMS = (timeHours) => {
-        // Multiplicamos por 3600 para convertir horas a segundos
         const totalSeconds = Math.round(timeHours * 3600);
         const h = Math.floor(totalSeconds / 3600);
         const m = Math.floor((totalSeconds % 3600) / 60);
