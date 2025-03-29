@@ -6,6 +6,10 @@ const axios = require('axios');
 
 //const API_KEY = process.env.OPENWEATHER_API_KEY;
 
+<<<<<<< HEAD
+=======
+// Obtener todas las ciudades
+>>>>>>> 5c4e6e4cbf140c456a74d6f12c65dd7dcd64f3bd
 router.get("/", (req, res) => {
     db.query("SELECT * FROM cities", (err, result) => {
         if (err) {

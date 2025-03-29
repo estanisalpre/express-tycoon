@@ -46,7 +46,11 @@ function RightWall({setActiveModal}) {
         }
 
         fetchWeather();
+<<<<<<< HEAD
     }, [userData?.city_name]);
+=======
+    }, [userData?.city_name]); 
+>>>>>>> 5c4e6e4cbf140c456a74d6f12c65dd7dcd64f3bd
 
     if (!userData) {
       return <div>Cargando...</div>;
