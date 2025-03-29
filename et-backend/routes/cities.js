@@ -6,8 +6,6 @@ const axios = require('axios');
 
 //const API_KEY = process.env.OPENWEATHER_API_KEY;
 
-
-// Obtener todas las ciudades
 router.get("/", (req, res) => {
     db.query("SELECT * FROM cities", (err, result) => {
         if (err) {
@@ -18,7 +16,6 @@ router.get("/", (req, res) => {
     });
 });
 
-// Ruta para obtener la temperatura de una ciudad
 router.get('/weather/:city', async (req, res) => {
     try {
         const city = req.params.city;

@@ -23,12 +23,11 @@ function TripsModal({ onClose }) {
       } 
       setUserData(data);
     
-      const count_deliveries = parseInt(data.deliveries_made); // Usar `data`, no `userData`
+      const count_deliveries = parseInt(data.deliveries_made); 
       return count_deliveries;
     });
   }, [userData]);
 
-  // Cargar rutas desde el backend
   useEffect(() => {
     const fetchRouteData = async () => {
       const userId = localStorage.getItem("userId");
@@ -57,7 +56,6 @@ function TripsModal({ onClose }) {
     fetchRouteData();
   }, []);
 
-  // Actualiza currentTime cada segundo (para refrescar la UI)
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTime(Date.now());
@@ -65,7 +63,6 @@ function TripsModal({ onClose }) {
     return () => clearInterval(interval);
   }, []);
 
-  // UPDATE DELIVERIES_MADE
   const updateDeliveriesMade = async () => {
     const userId = localStorage.getItem("userId");
     if (!userId) return;
@@ -88,7 +85,6 @@ function TripsModal({ onClose }) {
     }
   };
 
-  // Función para actualizar el balance del usuario
   const updateUserBalance = async (amount) => {
     const userId = localStorage.getItem("userId");
     if (!userId) return;
@@ -109,7 +105,6 @@ function TripsModal({ onClose }) {
     }
   };
 
-  // Calcula el tiempo transcurrido en segundos comparando currentTime con el start_time
   const calculateElapsed = (route) => {
     if (route.status !== "activo" || !route.start_time) return 0;
     // Convertimos "YYYY-MM-DD HH:mm:ss" a formato ISO si es necesario.
@@ -133,13 +128,10 @@ function TripsModal({ onClose }) {
     return Math.min((elapsed / totalTimeInSeconds) * 100, 100);
   };
 
-  // Función para iniciar el viaje o la vuelta.
-  // El parámetro isReturn indica si se está iniciando el viaje de vuelta.
   const iniciarRuta = async (estimatedTime, index, isReturn = false) => {
     try {
       const routeId = routes[index].route_id;
       const newStartTime = new Date().toISOString();
-      // Aquí se envía isReturn al backend para actualizar el campo is_return
       const response = await fetch(`http://localhost:5000/routes/start`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -151,8 +143,6 @@ function TripsModal({ onClose }) {
         return;
       }
 
-      // Actualizamos localmente el objeto de la ruta:
-      // Si isReturn es true, actualizamos is_return a 1 y cambiamos el status a "activo" con nuevo start_time.
       const newRoutes = routes.map((route, i) =>
         i === index
           ? { ...route, status: "activo", start_time: newStartTime, is_return: isReturn ? 1 : 0 }
@@ -164,23 +154,19 @@ function TripsModal({ onClose }) {
     }
   };
 
-  // Completar la ruta: se deposita el dinero y se actualiza el status a "completado"
   const completeRoute = async (routeId, index) => {
     try {
-      // Depositar el dinero (el precio es el mismo para ambos tramos)
       await updateUserBalance(routes[index].price);
       await updateDeliveriesMade();
   
-      // **Actualizar experiencia basada en la ruta**
-      const experienceGained = parseInt(routes[index].experience); // Obtenemos la experiencia del backend
-      const userId = localStorage.getItem("userId"); // Obtenemos el userId
+      const experienceGained = parseInt(routes[index].experience); 
+      const userId = localStorage.getItem("userId"); 
   
       if (!userId) {
         console.error("ID de usuario no disponible.");
         return;
       }
   
-      // Llamamos al nuevo endpoint para actualizar la experiencia
       const responseExperience = await fetch("http://localhost:5000/players/update-experience", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -195,7 +181,6 @@ function TripsModal({ onClose }) {
   
       console.log("Experiencia actualizada correctamente.");
   
-      // Actualizar la ruta a "completado" en el backend
       const response = await fetch(`http://localhost:5000/routes/complete`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -204,7 +189,6 @@ function TripsModal({ onClose }) {
   
       const data = await response.json();
       if (data.success) {
-        // Actualizamos localmente el status a "completado"
         const newRoutes = routes.map((route, i) =>
           i === index ? { ...route, status: "completado" } : route
         );
@@ -217,7 +201,6 @@ function TripsModal({ onClose }) {
     }
   };
   
-  // Revisa de forma continua si alguna ruta activa se completó
   useEffect(() => {
     routes.forEach((route, index) => {
       if (route.status === "activo") {
@@ -269,7 +252,6 @@ function TripsModal({ onClose }) {
                   )}
                 </div>
               </div>
-              {/* La visualización del trayecto depende de route.is_return */}
               <p>
                 { route.is_return
                   ? `${route.destination_city_name} → ${route.origin_city_name}`
@@ -283,7 +265,6 @@ function TripsModal({ onClose }) {
                   ? calculateTimeRemaining(route)
                   : `${parseFloat(route.estimated_time).toFixed(2)}h`}
               </p>
-              {/* Botón según el estado de la ruta */}
               {route.status === "pendiente" && (
                 <button onClick={() => iniciarRuta(route.estimated_time, index, false)}>
                   Iniciar ($ {route.price})

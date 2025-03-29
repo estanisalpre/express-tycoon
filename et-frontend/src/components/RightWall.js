@@ -32,7 +32,7 @@ function RightWall({setActiveModal}) {
     }, [navigate]);
     
     useEffect(() => {
-        if (!userData || !userData.city_name) return; // Evita ejecutar si userData no está definido
+        if (!userData || !userData.city_name) return; 
 
         async function fetchWeather() {
             try {
@@ -46,7 +46,7 @@ function RightWall({setActiveModal}) {
         }
 
         fetchWeather();
-    }, [userData?.city_name]); // Usa opcional chaining para evitar errores
+    }, [userData?.city_name]);
 
     if (!userData) {
       return <div>Cargando...</div>;

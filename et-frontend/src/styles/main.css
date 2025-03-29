@@ -191,6 +191,11 @@ nav ul li {
   background: #ccc;
   cursor: not-allowed;
 }
+#fatherContainer .startModal {
+  padding: 0px;
+  background-image: none;
+  background-color: transparent;
+}
 
 .playerMenu {
   position: absolute;

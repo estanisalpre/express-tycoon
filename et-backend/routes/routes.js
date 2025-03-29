@@ -2,9 +2,8 @@ const express = require("express");
 const router = express.Router();
 const db = require("../config/db");
 
-// Función para calcular distancia entre coordenadas (fórmula de Haversine)
 const calcularDistancia = (lat1, lon1, lat2, lon2) => {
-  const R = 6371; // Radio de la Tierra en km
+  const R = 6371; 
   const toRad = (value) => (value * Math.PI) / 180;
 
   const dLat = toRad(lat2 - lat1);
@@ -18,12 +17,9 @@ const calcularDistancia = (lat1, lon1, lat2, lon2) => {
       Math.sin(dLon / 2);
 
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  return R * c; // Distancia en kilómetros
+  return R * c; 
 };
 
-// ===== ENDPOINTS EXISTENTES =====
-
-// GET de rutas (por query string)
 router.get("/", (req, res) => {
   const { user_id } = req.query;
 
@@ -50,8 +46,7 @@ router.get("/", (req, res) => {
         .json({ success: false, message: "Error en el servidor" });
     }
 
-    // Calcular distancia y tiempo estimado si no están en la BD
-    const velocidadPromedio = 80; // km/h
+    const velocidadPromedio = 80;
 
     routes.forEach((route) => {
       if (!route.km_distance || !route.estimated_time) {
@@ -62,7 +57,7 @@ router.get("/", (req, res) => {
           route.destination_lon
         );
 
-        const tiempoEstimado = distancia / velocidadPromedio; // en horas
+        const tiempoEstimado = distancia / velocidadPromedio;
 
         route.km_distance = distancia.toFixed(2);
         route.estimated_time = tiempoEstimado.toFixed(2);
@@ -73,16 +68,15 @@ router.get("/", (req, res) => {
   });
 });
 
-// GET de rutas (por parámetro en URL)
 router.get("/:user_id", (req, res) => {
-  const { user_id } = req.params; // Obtener el user_id de la URL
+  const { user_id } = req.params; 
 
   if (!user_id) {
     return res.status(400).json({ error: "Falta el user_id" });
   }
 
-  const precioPorKm = 5; // $5 por km
-  const experienciaPorKm = 10;  // $10/km
+  const precioPorKm = 5; 
+  const experienciaPorKm = 10;  
   
   const query = `
     SELECT r.route_id, r.user_id, r.origin_city, r.destination_city, r.garage_id,
@@ -110,7 +104,6 @@ router.get("/:user_id", (req, res) => {
       });
     }
 
-    // Calcular distancia, tiempo estimado y precio
     const velocidadPromedio = 80; // km/h
     routes.forEach((route) => {
       if (!route.km_distance || !route.estimated_time) {
@@ -121,17 +114,15 @@ router.get("/:user_id", (req, res) => {
           route.destination_lon
         );
 
-        const tiempoEstimado = distancia / velocidadPromedio; // en horas
+        const tiempoEstimado = distancia / velocidadPromedio;
 
         route.km_distance = distancia.toFixed(2);
         route.estimated_time = tiempoEstimado.toFixed(2);
       }
 
-      // Calcular precio estimado
       const precioEstimado = (route.km_distance * precioPorKm).toFixed(2);
       route.price = precioEstimado;
-      // **Calcular experiencia basada en km**
-      const experienciaEstimado = (route.km_distance * experienciaPorKm).toFixed(0); // Redondear
+      const experienciaEstimado = (route.km_distance * experienciaPorKm).toFixed(0); 
       route.experience = experienciaEstimado;
     });
 
@@ -139,7 +130,6 @@ router.get("/:user_id", (req, res) => {
   });
 });
 
-// Crear nueva ruta con cálculos
 router.post("/create", (req, res) => {
   const { user_id, origin_city, destination_city, garage_id } = req.body;
 
@@ -185,8 +175,8 @@ router.post("/create", (req, res) => {
       destination.latitude,
       destination.longitude
     );
-    const velocidadPromedio = 80; // km/h
-    const tiempoEstimado = distancia / velocidadPromedio; // en horas
+    const velocidadPromedio = 80; 
+    const tiempoEstimado = distancia / velocidadPromedio; 
 
     const insertQuery = `
       INSERT INTO routes (user_id, origin_city, destination_city, garage_id, km_distance, estimated_time)
@@ -221,7 +211,6 @@ router.post("/create", (req, res) => {
   });
 });
 
-// Actualizar velocidad
 router.post("/update-speed", (req, res) => {
   const { route_id, speed } = req.body;
 
@@ -252,7 +241,6 @@ router.post("/update-speed", (req, res) => {
   });
 });
 
-// Eliminar una ruta
 router.delete("/delete/:route_id", (req, res) => {
   const { route_id } = req.params;
 
@@ -282,9 +270,6 @@ router.delete("/delete/:route_id", (req, res) => {
   });
 });
 
-// ===== NUEVOS ENDPOINTS PARA CONTROL DE ESTADO =====
-
-// Iniciar una ruta: se actualiza el estado a "activo" y se registra start_time
 router.post("/start", (req, res) => {
   const { routeId, start_time, isReturn } = req.body;
   if (!routeId) {
@@ -293,7 +278,6 @@ router.post("/start", (req, res) => {
       .json({ success: false, message: "Falta el routeId" });
   }
 
-  // Utilizamos la fecha enviada o la fecha actual
   const startTime = start_time ? new Date(start_time) : new Date();
 
   const query =
@@ -312,7 +296,6 @@ router.post("/start", (req, res) => {
   });
 });
 
-// Completar una ruta: se actualiza el estado a "completado"
 router.post("/complete", (req, res) => {
   const { routeId } = req.body;
   if (!routeId) {
